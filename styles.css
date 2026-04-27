@@ -1,0 +1,80 @@
+html {
+  scroll-behavior: smooth;
+}
+
+section,
+footer {
+  scroll-margin-top: 88px;
+}
+
+.gradient {
+  background: linear-gradient(135deg, #1c730c, #0f3e07);
+}
+
+.gold {
+  color: #c8a951;
+}
+
+.brand-float {
+  animation: brandFloat 5s ease-in-out infinite;
+}
+
+.project-track {
+  animation: projectSlide 18s linear infinite;
+}
+
+.project-carousel:hover .project-track {
+  animation-play-state: paused;
+}
+
+.limited-badge {
+  animation: blinkBadge 2.4s ease-in-out infinite;
+}
+
+.support-toast {
+  animation: toastIn 0.45s ease-out;
+}
+
+@keyframes brandFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes projectSlide {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes blinkBadge {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes toastIn {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
