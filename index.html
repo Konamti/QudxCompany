@@ -15,59 +15,137 @@
 <!-- NAV -->
 <header class="fixed w-full bg-white shadow z-50">
 <div class="max-w-7xl mx-auto px-5 sm:px-6 py-4 flex justify-between items-center">
-<div class="flex items-center gap-3">
+<a href="index.html" class="flex items-center gap-3">
 <img src="LOGO.png" class="w-10 h-10" alt="QUDx Inc. logo">
-<span class="font-bold text-lg">QUDx Inc.</span>
-</div>
+<span class="font-bold text-lg" data-i18n="brand">QUDx Inc.</span>
+</a>
 
-<nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
-<a href="#about" class="hover:text-green-700">About</a>
-<a href="#solution" class="hover:text-green-700">Solution</a>
-<a href="#how-it-works" class="hover:text-green-700">How It Works</a>
-<a href="#projects" class="hover:text-green-700">Projects</a>
-<a href="#contact" class="hover:text-green-700">Contact</a>
+<nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-gray-700">
+<a href="#about" class="hover:text-green-700" data-i18n="navAbout">About</a>
+<a href="#solution" class="hover:text-green-700" data-i18n="navSolution">Solution</a>
+<a href="#how-it-works" class="hover:text-green-700" data-i18n="navHow">How It Works</a>
+<a href="#projects" class="hover:text-green-700" data-i18n="navProjects">Projects</a>
+<a href="#contact" class="hover:text-green-700" data-i18n="navContact">Contact</a>
 </nav>
 
-<div class="hidden md:block">
-<a href="#cta" class="bg-green-700 text-white px-5 py-2 rounded-lg hover:bg-green-800">
+<div class="hidden lg:flex items-center gap-3">
+<label class="language-switcher" aria-label="Choose language">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="12" cy="12" r="10"></circle>
+<path d="M2 12h20"></path>
+<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+</svg>
+<select class="language-select" aria-label="Language">
+<option value="en">EN</option>
+<option value="fr">FR</option>
+<option value="ar">AR</option>
+<option value="it">IT</option>
+<option value="es">ES</option>
+<option value="ru">RU</option>
+<option value="id">ID</option>
+<option value="zu">ZA</option>
+<option value="zh">中文</option>
+<option value="ja">日本語</option>
+</select>
+</label>
+<a href="checkout.html" class="text-green-800 hover:text-green-700" aria-label="Open checkout cart">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="8" cy="21" r="1"></circle>
+<circle cx="19" cy="21" r="1"></circle>
+<path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h8.72a2 2 0 0 0 2-1.58L21 7H5.12"></path>
+</svg>
+</a>
+<a href="investor-partner.html" class="bg-green-700 text-white px-5 py-2 rounded-lg hover:bg-green-800" data-i18n="getStarted">
 Get Started
 </a>
 </div>
 
-<button onclick="toggleMenu()" class="md:hidden text-green-800 font-semibold" aria-label="Open menu">
+<div class="lg:hidden flex items-center gap-3">
+<label class="language-switcher compact" aria-label="Choose language">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="12" cy="12" r="10"></circle>
+<path d="M2 12h20"></path>
+<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+</svg>
+<select class="language-select" aria-label="Language">
+<option value="en">EN</option>
+<option value="fr">FR</option>
+<option value="ar">AR</option>
+<option value="it">IT</option>
+<option value="es">ES</option>
+<option value="ru">RU</option>
+<option value="id">ID</option>
+<option value="zu">ZA</option>
+<option value="zh">中文</option>
+<option value="ja">日本語</option>
+</select>
+</label>
+<a href="checkout.html" class="text-green-800 hover:text-green-700" aria-label="Open checkout cart">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="8" cy="21" r="1"></circle>
+<circle cx="19" cy="21" r="1"></circle>
+<path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h8.72a2 2 0 0 0 2-1.58L21 7H5.12"></path>
+</svg>
+</a>
+<button onclick="toggleMenu()" class="text-green-800 font-semibold" aria-label="Open menu" data-i18n="menu">
 Menu
 </button>
 </div>
+</div>
 
-<nav id="mobileMenu" class="hidden md:hidden bg-white border-t px-5 sm:px-6 pb-4 text-sm font-medium text-gray-700">
-<a href="#about" onclick="closeMenu()" class="block py-3 hover:text-green-700">About</a>
-<a href="#solution" onclick="closeMenu()" class="block py-3 hover:text-green-700">Solution</a>
-<a href="#how-it-works" onclick="closeMenu()" class="block py-3 hover:text-green-700">How It Works</a>
-<a href="#projects" onclick="closeMenu()" class="block py-3 hover:text-green-700">Projects</a>
-<a href="#contact" onclick="closeMenu()" class="block py-3 hover:text-green-700">Contact</a>
-<a href="#cta" onclick="closeMenu()" class="block mt-3 bg-green-700 text-white text-center px-5 py-3 rounded-lg hover:bg-green-800">
+<nav id="mobileMenu" class="hidden lg:hidden bg-white border-t px-5 sm:px-6 pb-4 text-sm font-medium text-gray-700">
+<a href="#about" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navAbout">About</a>
+<a href="#solution" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navSolution">Solution</a>
+<a href="#how-it-works" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navHow">How It Works</a>
+<a href="#projects" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navProjects">Projects</a>
+<a href="#contact" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navContact">Contact</a>
+<a href="checkout.html" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="cartCheckout">Cart / Checkout</a>
+<a href="investor-partner.html" onclick="closeMenu()" class="block mt-3 bg-green-700 text-white text-center px-5 py-3 rounded-lg hover:bg-green-800" data-i18n="getStarted">
 Get Started
 </a>
 </nav>
 </header>
 
 <!-- HERO -->
-<section class="gradient text-white pt-32 pb-20 px-5 sm:px-6 text-center">
-<h1 class="text-4xl md:text-6xl font-bold mb-6" data-aos="fade-up">
+<section class="investor-hero relative overflow-hidden text-white pt-32 pb-20 px-5 sm:px-6">
+<div class="investor-doodle investor-doodle-one"></div>
+<div class="investor-doodle investor-doodle-two"></div>
+<div class="max-w-7xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+<div data-aos="fade-right">
+<p class="uppercase tracking-[0.24em] text-white/75 text-sm font-bold mb-5" data-i18n="heroEyebrow">QUDx Himaya</p>
+<h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6" data-i18n="heroTitle">
 Africa's First Scalable Halal Protection System
 </h1>
 
-<p class="max-w-2xl mx-auto text-lg opacity-90 mb-8" data-aos="fade-up" data-aos-delay="200">
+<p class="max-w-2xl text-lg md:text-xl leading-8 text-white/88 mb-8" data-i18n="heroText">
 Sharia-compliant insurance and inheritance protection designed for trust, transparency, and generational security.
 </p>
 
-<div class="flex flex-col md:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
-<button onclick="openForm('investor')" class="bg-white text-green-800 px-6 py-3 rounded-lg font-semibold">Request Investor Access</button>
-<button onclick="openForm('partner')" class="border border-white px-6 py-3 rounded-lg">Partner With Us</button>
+<div class="flex flex-col sm:flex-row gap-4">
+<button onclick="openForm('investor')" class="bg-white text-green-800 px-6 py-3 rounded-lg font-semibold shadow-xl" data-i18n="requestInvestor">Request Investor Access</button>
+<button onclick="openForm('partner')" class="border border-white px-6 py-3 rounded-lg" data-i18n="partnerWithUs">Partner With Us</button>
+</div>
+</div>
+
+<div class="investor-orbit p-6" data-aos="zoom-in" data-aos-delay="150">
+<div class="bg-white/12 border border-white/20 rounded-lg p-6 backdrop-blur-md">
+<img src="illustration.png" class="brand-float w-full max-w-md mx-auto" alt="Animated QUDx illustration">
+<div class="grid grid-cols-2 gap-4 text-center mt-4">
+<div class="investor-mini-card">
+<span class="block text-3xl font-black">04</span>
+<span class="text-sm text-white/75" data-i18n="subsidiaries">Subsidiaries</span>
+</div>
+<div class="investor-mini-card">
+<span class="block text-3xl font-black">80%</span>
+<span class="text-sm text-white/75" data-i18n="ongoingProjects">Ongoing Projects</span>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 
-<!-- BRAND STORY -->
+<!-- BRAND STORY
 <section class="bg-white py-12 md:py-16 px-5 sm:px-6 overflow-hidden">
 <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
 <div class="lg:pt-4" data-aos="fade-right">
@@ -75,16 +153,17 @@ Sharia-compliant insurance and inheritance protection designed for trust, transp
 <p class="max-w-xl text-gray-600 text-lg leading-8 mb-10">
 Building ethical protection systems for families, communities, investors, and partners across Africa.
 </p>
-<div class="flex flex-wrap gap-8 sm:gap-14">
-<div class="flex items-end gap-4">
-<span class="text-5xl font-bold">3</span>
-<span class="text-sm uppercase tracking-wide text-gray-600 pb-2">Subsidiaries</span>
+<div id="brandStats" class="relative flex flex-wrap gap-5 sm:gap-8">
+<div class="stat-panel flex items-end gap-4">
+<span class="stat-value" data-count="4" data-pad="2">00</span>
+<span class="text-sm uppercase tracking-wide text-gray-600 pb-3">Subsidiaries</span>
 </div>
 <div class="h-14 w-px bg-gray-200"></div>
-<div class="flex items-end gap-4">
-<span class="text-5xl font-bold">3</span>
-<span class="text-sm text-gray-600 pb-2">Projects<br>Completed</span>
+<div class="stat-panel flex items-end gap-4">
+<span class="stat-value" data-count="80" data-suffix="%">00</span>
+<span class="text-sm text-gray-600 pb-3">Ongoing<br>Projects</span>
 </div>
+<div id="statsBurst" class="stats-burst" aria-hidden="true"></div>
 </div>
 </div>
 
@@ -93,14 +172,15 @@ Building ethical protection systems for families, communities, investors, and pa
 </div>
 </div>
 </section>
+-->
 
 <!-- PROBLEM -->
-<section id="about" class="py-20 max-w-6xl mx-auto px-5 sm:px-6 text-center">
-<h2 class="text-3xl font-bold mb-12">A New Era With QUDx</h2>
+<section id="about" class="py-12 md:py-14 max-w-6xl mx-auto px-5 sm:px-6 text-center">
+<h2 class="text-3xl font-bold mb-8">Old Era Analysis by QUDx</h2>
 
-<div class="grid md:grid-cols-3 gap-8">
+<div class="grid md:grid-cols-3 gap-6">
 <div data-aos="fade-up">
-<h3 class="font-semibold text-xl mb-3">Lack of Trust</h3>
+<h3 class="font-semibold text-xl mb-3">Heavy Trust Issues</h3>
 <p>Traditional insurance systems lack transparency and public confidence.</p>
 </div>
 
@@ -118,7 +198,7 @@ Building ethical protection systems for families, communities, investors, and pa
 
 <!-- SOLUTION -->
 <section id="solution" class="bg-gray-50 py-20 text-center px-5 sm:px-6">
-<h2 class="text-3xl font-bold mb-12">A New Standard of Protection</h2>
+<h2 class="text-3xl font-bold mb-12">A New Era With QUDx</h2>
 
 <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 <div data-aos="zoom-in">
@@ -143,19 +223,100 @@ Building ethical protection systems for families, communities, investors, and pa
 <h2 class="text-3xl font-bold mb-12">How It Works</h2>
 
 <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-<div data-aos="fade-up">Register</div>
-<div data-aos="fade-up" data-aos-delay="150">Contribute</div>
-<div data-aos="fade-up" data-aos-delay="300">Track</div>
-<div data-aos="fade-up" data-aos-delay="450">Claim & Distribute</div>
+<div class="text-green-700 text-xl md:text-2xl font-semibold" data-aos="fade-up">Register</div>
+<div class="text-green-700 text-xl md:text-2xl font-semibold" data-aos="fade-up" data-aos-delay="150">Contribute</div>
+<div class="text-green-700 text-xl md:text-2xl font-semibold" data-aos="fade-up" data-aos-delay="300">Track</div>
+<div class="text-green-700 text-xl md:text-2xl font-semibold" data-aos="fade-up" data-aos-delay="450">Claim & Distribute</div>
 </div>
 </section>
 
-<!-- TECH -->
-<section class="bg-gray-100 py-20 px-5 sm:px-6 text-center">
-<h2 class="text-3xl font-bold mb-10">Built to Scale</h2>
-<p class="max-w-2xl mx-auto">
-Role-based dashboards, secure cloud storage, audit trails, and blockchain-ready infrastructure.
-</p>
+<!-- PITCH -->
+<section class="bg-gray-100 py-20 px-5 sm:px-6">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-12" data-aos="fade-up">
+<h2 class="text-4xl md:text-6xl font-bold mb-4">QUDx Inc Pitch</h2>
+<p class="max-w-3xl mx-auto text-gray-600 text-lg">Building a value-driven ecosystem for the Ummah through ethical, structured, and scalable solutions.</p>
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<article class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up">
+<h3 class="text-xl font-bold mb-3 text-green-800">Problem</h3>
+<p class="text-gray-600">Muslim families lack a unified and trustworthy ecosystem for daily needs, financial protection, and value-aligned services.</p>
+</article>
+<article class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="100">
+<h3 class="text-xl font-bold mb-3 text-green-800">Solution</h3>
+<p class="text-gray-600">QUDx Inc. is developing a centralized ecosystem combining commerce, essential services, and long-term Islamic-compliant solutions.</p>
+</article>
+<article class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="200">
+<h3 class="text-xl font-bold mb-3 text-green-800">Market Opportunity</h3>
+<p class="text-gray-600">1.9B+ Muslims globally, with a multi-trillion-dollar Islamic economy and rising demand for Shariah-aligned platforms.</p>
+</article>
+<article class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up">
+<h3 class="text-xl font-bold mb-3 text-green-800">Business Model</h3>
+<p class="text-gray-600">QUDx Properties, QUDx Store, partnerships with Islamic suppliers, and expansion into services and digital infrastructure.</p>
+</article>
+<article class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="100">
+<h3 class="text-xl font-bold mb-3 text-green-800">Investment Ask</h3>
+<p class="text-gray-600">Seeking $30,000 - $50,000 to fund marketing, infrastructure, operations, staff, partnerships, and team expansion.</p>
+</article>
+<article class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="200">
+<h3 class="text-xl font-bold mb-3 text-green-800">Founder</h3>
+<p class="text-gray-600">Mohamed Tidiane Konate, Founder & Vision Lead. QUDx Inc. is built for long-term impact, integrity, and structure.</p>
+</article>
+</div>
+</div>
+</section>
+
+<!-- INVESTOR OPTIONS -->
+<section id="investor-options" class="bg-white py-20 px-5 sm:px-6">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-4xl md:text-6xl font-bold text-center mb-12" data-aos="fade-up">Investor Options</h2>
+
+<div class="grid md:grid-cols-3 gap-8">
+<article class="relative border rounded-lg p-7 shadow-sm" data-aos="fade-up">
+<h3 class="text-3xl font-bold mb-4">Elite</h3>
+<p class="text-gray-600 mb-8">For visible strategic partners who want to support QUDx growth and community trust.</p>
+<div class="flex flex-col gap-3">
+<a href="investor-partner.html" class="bg-green-700 text-white px-5 py-3 rounded-lg text-center">Learn More</a>
+<button onclick="openPaymentModal('Elite')" class="border border-green-700 text-green-800 px-5 py-3 rounded-lg text-center">I Am Interested</button>
+</div>
+</article>
+
+<article class="relative border-2 border-green-700 rounded-lg p-7 shadow-md" data-aos="fade-up" data-aos-delay="150">
+<span class="limited-badge absolute -top-4 right-5 bg-red-600 text-white text-xs font-bold uppercase tracking-wide px-3 py-2 rounded-full">Limited Time</span>
+<h3 class="text-3xl font-bold mb-4">BODs</h3>
+<p class="text-gray-600 mb-8">For founding board-level supporters who want early involvement in QUDx direction.</p>
+<div class="flex flex-col gap-3">
+<a href="investor-partner.html" class="bg-green-700 text-white px-5 py-3 rounded-lg text-center">Learn More</a>
+<button onclick="openPaymentModal('BODs')" class="border border-green-700 text-green-800 px-5 py-3 rounded-lg text-center">I Am Interested</button>
+</div>
+</article>
+
+<article class="relative border rounded-lg p-7 shadow-sm" data-aos="fade-up" data-aos-delay="300">
+<h3 class="text-3xl font-bold mb-4">Anonymous</h3>
+<p class="text-gray-600 mb-8">For supporters who want to contribute privately while still helping the mission grow.</p>
+<div class="flex flex-col gap-3">
+<a href="investor-partner.html" class="bg-green-700 text-white px-5 py-3 rounded-lg text-center">Learn More</a>
+<button onclick="openPaymentModal('Anonymous')" class="border border-green-700 text-green-800 px-5 py-3 rounded-lg text-center">I Am Interested</button>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<!-- FOUNDER NOTE -->
+<section class="bg-[#f7f8f2] py-20 px-5 sm:px-6 text-center">
+<div class="max-w-3xl mx-auto" data-aos="fade-up">
+<h2 class="text-3xl md:text-4xl font-serif italic text-green-800 mb-6">A Note from the Founder</h2>
+<div class="w-28 h-1 bg-green-800 mx-auto mb-8"></div>
+<div class="space-y-6 text-lg md:text-xl leading-9 text-gray-700">
+<p>Qudx did not start as a business. It started as a response to a problem I could clearly see.</p>
+<p>Too many families are left navigating important aspects of life - whether daily needs, financial protection, or inheritance - without simple, trustworthy, and structured solutions that align with their values. Instead of waiting for something to exist, I decided to build it.</p>
+<p>Every part of Qudx has been designed with intention - from the systems behind it to the long-term vision it represents. What you see today is the early stage of a much larger structure being put in place.</p>
+<p>Qudx is not being built for short-term results. It is being built to last, to serve, and to create real impact over time.</p>
+<p class="pt-2"><strong>- Mohamed Tidiane Konate</strong><br>Founder & Vision Lead, Qudx</p>
+</div>
+</div>
 </section>
 
 <!-- PROJECTS -->
@@ -163,8 +324,11 @@ Role-based dashboards, secure cloud storage, audit trails, and blockchain-ready 
 <div class="max-w-7xl mx-auto">
 <h2 class="text-5xl md:text-7xl font-bold mb-12 text-center" data-aos="fade-up">Projects</h2>
 
-<div class="project-carousel overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-<div class="project-track flex gap-6 w-max">
+<div class="relative" data-aos="fade-up" data-aos-delay="200">
+<button onclick="moveCarousel('left')" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white text-green-800 shadow-lg w-11 h-11 rounded-full flex items-center justify-center" aria-label="Previous project">&#8592;</button>
+<button onclick="moveCarousel('right')" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white text-green-800 shadow-lg w-11 h-11 rounded-full flex items-center justify-center" aria-label="Next project">&#8594;</button>
+<div id="projectCarousel" class="project-carousel overflow-x-auto">
+<div id="projectTrack" class="project-track flex gap-6 w-max px-12">
 <!-- Edit project cards here: replace image, title, and data-project value when you have final project details. -->
 <article class="bg-white text-gray-900 rounded-lg overflow-hidden shadow-lg w-[280px] sm:w-[340px] md:w-[380px] shrink-0">
 <img src="LOGO.png" class="w-full h-52 object-contain bg-gray-50 p-8" alt="Himaya project">
@@ -203,78 +367,17 @@ Role-based dashboards, secure cloud storage, audit trails, and blockchain-ready 
 </article>
 
 <article class="bg-white text-gray-900 rounded-lg overflow-hidden shadow-lg w-[280px] sm:w-[340px] md:w-[380px] shrink-0">
-<img src="LOGO.png" class="w-full h-52 object-contain bg-gray-50 p-8" alt="Himaya project">
+<img src="LOGO.png" class="w-full h-52 object-contain bg-gray-50 p-8" alt="QUDx Properties project">
 <div class="p-6">
-<h3 class="text-2xl font-bold mb-2">QUDx Himaya</h3>
-<p class="text-gray-600 mb-6">Halal assurance and inheritance protection for families.</p>
+<h3 class="text-2xl font-bold mb-2">QUDx Properties</h3>
+<p class="text-gray-600 mb-6">A property management platform that simplifies property management.</p>
 <div class="flex flex-col sm:flex-row gap-3">
-<button onclick="openProjectModal('himaya')" class="bg-green-700 text-white px-4 py-3 rounded-lg">Learn More</button>
-<a href="#investor-options" class="border border-green-700 text-green-800 px-4 py-3 rounded-lg text-center">Invest/Partner</a>
-</div>
-</div>
-</article>
-
-<article class="bg-white text-gray-900 rounded-lg overflow-hidden shadow-lg w-[280px] sm:w-[340px] md:w-[380px] shrink-0">
-<img src="LOGO.png" class="w-full h-52 object-contain bg-gray-50 p-8" alt="QUDx digital project">
-<div class="p-6">
-<h3 class="text-2xl font-bold mb-2">QUDx Digital</h3>
-<p class="text-gray-600 mb-6">Secure workflows for claims, records, and reporting.</p>
-<div class="flex flex-col sm:flex-row gap-3">
-<button onclick="openProjectModal('digital')" class="bg-green-700 text-white px-4 py-3 rounded-lg">Learn More</button>
-<a href="#investor-options" class="border border-green-700 text-green-800 px-4 py-3 rounded-lg text-center">Invest/Partner</a>
-</div>
-</div>
-</article>
-
-<article class="bg-white text-gray-900 rounded-lg overflow-hidden shadow-lg w-[280px] sm:w-[340px] md:w-[380px] shrink-0">
-<img src="LOGO.png" class="w-full h-52 object-contain bg-gray-50 p-8" alt="QUDx community project">
-<div class="p-6">
-<h3 class="text-2xl font-bold mb-2">QUDx Community</h3>
-<p class="text-gray-600 mb-6">Programs for family resilience and ethical growth.</p>
-<div class="flex flex-col sm:flex-row gap-3">
-<button onclick="openProjectModal('community')" class="bg-green-700 text-white px-4 py-3 rounded-lg">Learn More</button>
+<button onclick="openProjectModal('properties')" class="bg-green-700 text-white px-4 py-3 rounded-lg">Learn More</button>
 <a href="#investor-options" class="border border-green-700 text-green-800 px-4 py-3 rounded-lg text-center">Invest/Partner</a>
 </div>
 </div>
 </article>
 </div>
-</div>
-</div>
-</section>
-
-<!-- INVESTOR OPTIONS -->
-<section id="investor-options" class="bg-white py-20 px-5 sm:px-6">
-<div class="max-w-7xl mx-auto">
-<h2 class="text-4xl md:text-6xl font-bold text-center mb-12" data-aos="fade-up">Investor Options</h2>
-
-<div class="grid md:grid-cols-3 gap-8">
-<article class="relative border rounded-lg p-7 shadow-sm" data-aos="fade-up">
-<h3 class="text-3xl font-bold mb-4">Elite</h3>
-<p class="text-gray-600 mb-8">For visible strategic partners who want to support QUDx growth and community trust.</p>
-<div class="flex flex-col gap-3">
-<a href="investor-partner.html" class="bg-green-700 text-white px-5 py-3 rounded-lg text-center">Learn More</a>
-<a href="https://paystack.shop/pay/v2bhn6rfqe" target="_blank" onclick="showSupportToast()" class="border border-green-700 text-green-800 px-5 py-3 rounded-lg text-center">I Am Interested</a>
-</div>
-</article>
-
-<article class="relative border-2 border-green-700 rounded-lg p-7 shadow-md" data-aos="fade-up" data-aos-delay="150">
-<span class="limited-badge absolute -top-4 right-5 bg-red-600 text-white text-xs font-bold uppercase tracking-wide px-3 py-2 rounded-full">Limited Time</span>
-<h3 class="text-3xl font-bold mb-4">BODs</h3>
-<p class="text-gray-600 mb-8">For founding board-level supporters who want early involvement in QUDx direction.</p>
-<div class="flex flex-col gap-3">
-<a href="investor-partner.html" class="bg-green-700 text-white px-5 py-3 rounded-lg text-center">Learn More</a>
-<a href="https://paystack.shop/pay/v2bhn6rfqe" target="_blank" onclick="showSupportToast()" class="border border-green-700 text-green-800 px-5 py-3 rounded-lg text-center">I Am Interested</a>
-</div>
-</article>
-
-<article class="relative border rounded-lg p-7 shadow-sm" data-aos="fade-up" data-aos-delay="300">
-<h3 class="text-3xl font-bold mb-4">Anonymous</h3>
-<p class="text-gray-600 mb-8">For supporters who want to contribute privately while still helping the mission grow.</p>
-<div class="flex flex-col gap-3">
-<a href="investor-partner.html" class="bg-green-700 text-white px-5 py-3 rounded-lg text-center">Learn More</a>
-<a href="https://paystack.shop/pay/v2bhn6rfqe" target="_blank" onclick="showSupportToast()" class="border border-green-700 text-green-800 px-5 py-3 rounded-lg text-center">I Am Interested</a>
-</div>
-</article>
 </div>
 </div>
 </section>
@@ -331,10 +434,46 @@ Join Early Access
 </div>
 </div>
 
+<!-- PAYMENT MODAL -->
+<div id="paymentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-5 flex items-center justify-center z-[75]">
+<div class="bg-white p-6 sm:p-8 rounded-lg w-full max-w-lg">
+<h3 class="text-2xl font-bold mb-3">Choose Payment Option</h3>
+<p id="paymentPlanText" class="text-gray-600 mb-6">Select how you would like to support QUDx.</p>
+<div class="grid sm:grid-cols-2 gap-4">
+<button id="paypalOption" type="button" disabled class="cursor-not-allowed border border-gray-300 bg-gray-100 text-gray-400 px-5 py-4 rounded-lg text-center font-semibold">PayPal <span class="block text-sm font-normal">Coming Soon</span></button>
+<a id="paystackOption" href="checkout.html?method=paystack" class="bg-green-700 text-white px-5 py-4 rounded-lg text-center font-semibold">Paystack / Visa / Mobile Money</a>
+</div>
+<button onclick="closePaymentModal()" class="mt-6 text-sm text-gray-600">Close</button>
+</div>
+</div>
+
 <!-- FOOTER -->
-<footer id="contact" class="py-10 px-5 sm:px-6 text-center bg-white border-t">
-<p>partnership@qudxinc.org | support@qudxinc.org</p>
-<p class="text-sm text-gray-500 mt-2">Qudx Inc &copy; 2026</p>
+<footer id="contact" class="footer-shell px-5 sm:px-6 text-white">
+<div class="max-w-7xl mx-auto py-12">
+<div class="grid md:grid-cols-[1.2fr_1fr] gap-10 items-center">
+<div>
+<a href="index.html" class="inline-flex items-center gap-3 mb-5">
+<img src="LOGO.png" class="w-11 h-11" alt="QUDx Inc. logo">
+<span class="font-bold text-xl">QUDx Inc.</span>
+</a>
+<p class="text-white/80 max-w-xl">Ethical protection, structured services, and long-term value for families, partners, and communities.</p>
+<p class="mt-5 text-white/90">partnership@qudxinc.org | support@qudxinc.org</p>
+</div>
+
+<div class="flex flex-wrap md:justify-end gap-3">
+<a href="#about" class="footer-link">About</a>
+<a href="#solution" class="footer-link">Solution</a>
+<a href="#how-it-works" class="footer-link">How It Works</a>
+<a href="#projects" class="footer-link">Projects</a>
+<a href="checkout.html" class="footer-link">Cart</a>
+<a href="investor-partner.html" class="footer-cta">Get Started</a>
+</div>
+</div>
+<div class="mt-10 pt-6 border-t border-white/15 text-sm text-white/70 flex flex-col sm:flex-row justify-between gap-3">
+<p>Qudx Inc &copy; 2026</p>
+<p>Built for long-term impact, integrity, and structure.</p>
+</div>
+</div>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>

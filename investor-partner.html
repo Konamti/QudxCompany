@@ -5,98 +5,305 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Investor & Partner | QUDx Himaya</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <link href="styles.css" rel="stylesheet">
 </head>
-<body class="bg-white text-gray-900">
 
+<body class="bg-[#f8faf7] text-gray-900">
 <header class="fixed w-full bg-white shadow z-50">
-<div class="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex justify-between items-center">
+<div class="max-w-7xl mx-auto px-5 sm:px-6 py-4 flex justify-between items-center">
 <a href="index.html" class="flex items-center gap-3">
 <img src="LOGO.png" class="w-10 h-10" alt="QUDx Inc. logo">
 <span class="font-bold text-lg">QUDx Inc.</span>
 </a>
+
+<div class="flex items-center gap-4">
+<label class="language-switcher compact" aria-label="Choose language">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="12" cy="12" r="10"></circle>
+<path d="M2 12h20"></path>
+<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+</svg>
+<select class="language-select" aria-label="Language">
+<option value="en">EN</option>
+<option value="fr">FR</option>
+<option value="ar">AR</option>
+<option value="it">IT</option>
+<option value="es">ES</option>
+<option value="ru">RU</option>
+<option value="id">ID</option>
+<option value="zu">ZA</option>
+<option value="zh">中文</option>
+<option value="ja">日本語</option>
+</select>
+</label>
+<a href="checkout.html" class="text-green-800 hover:text-green-700" aria-label="Open checkout cart">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="8" cy="21" r="1"></circle>
+<circle cx="19" cy="21" r="1"></circle>
+<path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h8.72a2 2 0 0 0 2-1.58L21 7H5.12"></path>
+</svg>
+</a>
 <a href="index.html#investor-options" class="text-sm font-semibold text-green-800 hover:text-green-700">Back</a>
+</div>
 </div>
 </header>
 
 <main>
-<section class="gradient text-white pt-32 pb-20 px-5 sm:px-6 text-center">
-<h1 class="text-4xl md:text-6xl font-bold mb-6">Investor & Partner Section for QUDx Himaya</h1>
-<p class="max-w-3xl mx-auto text-lg opacity-90">
+<!-- HERO -->
+<section class="investor-hero relative overflow-hidden pt-32 pb-20 px-5 sm:px-6 text-white">
+<div class="investor-doodle investor-doodle-one"></div>
+<div class="investor-doodle investor-doodle-two"></div>
+
+<div class="max-w-7xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+<div data-aos="fade-right">
+<p class="uppercase tracking-[0.24em] text-white/75 text-sm font-bold mb-5">QUDx Himaya</p>
+<h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">Investor & Partner Brief</h1>
+<p class="max-w-2xl text-lg md:text-xl leading-8 text-white/88 mb-8">
 An ethical assurance model for families, investors, partners, and communities.
 </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button onclick="openPaymentModal('Investor')" class="bg-white text-green-800 px-6 py-3 rounded-lg font-bold shadow-xl">Become an Investor</button>
+<a href="#investment-story" class="border border-white/70 text-white px-6 py-3 rounded-lg font-semibold text-center">Explore Brief</a>
+</div>
+</div>
+
+<div class="investor-orbit p-6" data-aos="zoom-in" data-aos-delay="150">
+<div class="bg-white/12 border border-white/20 rounded-lg p-6 backdrop-blur-md">
+<img src="LOGO.png" class="w-24 h-24 mx-auto mb-6" alt="QUDx Himaya">
+<div class="grid grid-cols-2 gap-4 text-center">
+<div class="investor-mini-card">
+<span class="block text-3xl font-black">1.9B+</span>
+<span class="text-sm text-white/75">Muslim Market</span>
+</div>
+<div class="investor-mini-card">
+<span class="block text-3xl font-black">15-20M</span>
+<span class="text-sm text-white/75">CFA Range</span>
+</div>
+<div class="investor-mini-card">
+<span class="block text-3xl font-black">03</span>
+<span class="text-sm text-white/75">Core Principles</span>
+</div>
+<div class="investor-mini-card">
+<span class="block text-3xl font-black">100%</span>
+<span class="text-sm text-white/75">Ethical Focus</span>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
-<section class="py-16 px-5 sm:px-6">
-<div class="max-w-4xl mx-auto space-y-12 leading-8 text-gray-700">
-<article>
+<!-- INTRO -->
+<section id="investment-story" class="py-20 px-5 sm:px-6">
+<div class="max-w-7xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
+<div class="sticky top-28 hidden lg:block" data-aos="fade-right">
+<div class="investor-side-card">
+<span class="investor-icon">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+</svg>
+</span>
+<h2 class="text-3xl font-bold mt-5 mb-4">Protection first. Profit with purpose.</h2>
+<p class="text-gray-600 leading-8">QUDx Himaya is built to protect families, bring dignity to inheritance planning, and create a transparent ethical investment model.</p>
+</div>
+</div>
+
+<div class="space-y-8">
+<article class="investor-story-card" data-aos="fade-up">
 <h2 class="text-3xl font-bold text-gray-950 mb-4">Introduction</h2>
 <p>QUDx Himaya was born from a simple but urgent reality: families in Cote d'Ivoire and across Africa often face financial insecurity when tragedy strikes. Traditional insurance systems are complex, inaccessible, and rarely aligned with Islamic values. QUDx Himaya exists to change that - to protect people, not profits, and to build a Sharia-compliant, ethical assurance system that empowers communities and safeguards generational wealth.</p>
 </article>
 
-<article>
+<article class="investor-story-card" data-aos="fade-up">
 <h2 class="text-3xl font-bold text-gray-950 mb-4">Our Story</h2>
 <p>From the beginning, QUDx Himaya has been guided by Islamic principles such as Faraid, Takaful, and Tabarru. We replace informal, inconsistent practices with structured, transparent, and halal systems. Our brand, symbolized by the elephant - Cote d'Ivoire's national emblem - represents strength, protection, wisdom, and loyalty. We are deeply rooted in our community, and our mission is to bring dignity, peace of mind, and financial stability to families who need it most.</p>
 </article>
+</div>
+</div>
+</section>
 
-<article>
-<h2 class="text-3xl font-bold text-gray-950 mb-4">Why Invest</h2>
-<ul class="list-disc pl-6 space-y-2">
-<li><strong>Market Gap:</strong> Millions of African Muslim families lack access to ethical insurance and inheritance protection.</li>
-<li><strong>Unique Value:</strong> QUDx Himaya is Sharia-compliant, transparent, and community-driven.</li>
-<li><strong>Scalability:</strong> Starting in Cote d'Ivoire, with potential to expand regionally and globally.</li>
-<li><strong>Global Reach:</strong> Diaspora Muslims abroad can contribute easily via PayPal and digital platforms.</li>
-</ul>
-</article>
+<!-- WHY INVEST -->
+<section class="py-20 px-5 sm:px-6 bg-white">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-12" data-aos="fade-up">
+<h2 class="text-4xl md:text-5xl font-bold mb-4">Why Invest</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">A structured answer to a real market gap, built with community trust at the center.</p>
+</div>
 
-<article>
-<h2 class="text-3xl font-bold text-gray-950 mb-4">Investor Returns</h2>
-<ul class="list-disc pl-6 space-y-2">
-<li><strong>Financial Returns:</strong> A share of surplus funds generated after claims and operational costs, distributed transparently.</li>
-<li><strong>Social Impact:</strong> Direct involvement in protecting families, building generational wealth, and pioneering Islamic finance in Africa.</li>
-<li><strong>Visibility & Credibility:</strong> Recognition as founding partners on our website and in community campaigns.</li>
-</ul>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<article class="investor-feature-card" data-aos="zoom-in">
+<span class="investor-icon">01</span>
+<h3>Market Gap</h3>
+<p>Millions of African Muslim families lack access to ethical insurance and inheritance protection.</p>
 </article>
+<article class="investor-feature-card" data-aos="zoom-in" data-aos-delay="100">
+<span class="investor-icon">02</span>
+<h3>Unique Value</h3>
+<p>QUDx Himaya is Sharia-compliant, transparent, and community-driven.</p>
+</article>
+<article class="investor-feature-card" data-aos="zoom-in" data-aos-delay="200">
+<span class="investor-icon">03</span>
+<h3>Scalability</h3>
+<p>Starting in Cote d'Ivoire, with potential to expand regionally and globally.</p>
+</article>
+<article class="investor-feature-card" data-aos="zoom-in" data-aos-delay="300">
+<span class="investor-icon">04</span>
+<h3>Global Reach</h3>
+<p>Diaspora Muslims abroad can contribute easily via PayPal and digital platforms.</p>
+</article>
+</div>
+</div>
+</section>
 
-<article>
-<h2 class="text-3xl font-bold text-gray-950 mb-4">How It Works</h2>
-<ol class="list-decimal pl-6 space-y-2">
-<li><strong>Contribution Pool:</strong> Members contribute voluntarily into a shared protection fund.</li>
-<li><strong>Claims & Services:</strong> Funds are used ethically to cover claims and inheritance protection.</li>
-<li><strong>Profit Sharing:</strong> Surplus funds are shared with investors or reinvested into community projects.</li>
-<li><strong>Transparency:</strong> Every transaction is logged, audited, and reviewed for Sharia compliance.</li>
-</ol>
-</article>
+<!-- RETURNS AND PROCESS -->
+<section class="py-20 px-5 sm:px-6 bg-[#f8faf7]">
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10">
+<div data-aos="fade-right">
+<h2 class="text-4xl font-bold mb-8">Investor Returns</h2>
+<div class="space-y-5">
+<div class="investor-return-item">
+<span class="investor-icon">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M3 3v18h18"></path>
+<path d="m19 9-5 5-4-4-3 3"></path>
+</svg>
+</span>
+<div>
+<h3>Financial Returns</h3>
+<p>A share of surplus funds generated after claims and operational costs, distributed transparently.</p>
+</div>
+</div>
+<div class="investor-return-item">
+<span class="investor-icon">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+<circle cx="9" cy="7" r="4"></circle>
+<path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+</svg>
+</span>
+<div>
+<h3>Social Impact</h3>
+<p>Direct involvement in protecting families, building generational wealth, and pioneering Islamic finance in Africa.</p>
+</div>
+</div>
+<div class="investor-return-item">
+<span class="investor-icon">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M12 8V4H8"></path>
+<rect width="16" height="12" x="4" y="8" rx="2"></rect>
+<path d="M2 14h2"></path>
+<path d="M20 14h2"></path>
+<path d="M15 13v2"></path>
+<path d="M9 13v2"></path>
+</svg>
+</span>
+<div>
+<h3>Visibility & Credibility</h3>
+<p>Recognition as founding partners on our website and in community campaigns.</p>
+</div>
+</div>
+</div>
+</div>
 
-<article>
-<h2 class="text-3xl font-bold text-gray-950 mb-4">Assurance for Investors</h2>
-<ul class="list-disc pl-6 space-y-2">
-<li><strong>Sharia Board Oversight:</strong> Ensures compliance with Islamic principles.</li>
-<li><strong>Audit & Reporting:</strong> Regular financial reports shared with investors.</li>
-<li><strong>Legal Framework:</strong> Contracts aligned with local law and Islamic finance standards.</li>
-<li><strong>Security:</strong> SSL-protected site, PayPal integration, encrypted records.</li>
-</ul>
-</article>
+<div data-aos="fade-left">
+<h2 class="text-4xl font-bold mb-8">How It Works</h2>
+<div class="investor-timeline">
+<div><span>1</span><p><strong>Contribution Pool:</strong> Members contribute voluntarily into a shared protection fund.</p></div>
+<div><span>2</span><p><strong>Claims & Services:</strong> Funds are used ethically to cover claims and inheritance protection.</p></div>
+<div><span>3</span><p><strong>Profit Sharing:</strong> Surplus funds are shared with investors or reinvested into community projects.</p></div>
+<div><span>4</span><p><strong>Transparency:</strong> Every transaction is logged, audited, and reviewed for Sharia compliance.</p></div>
+</div>
+</div>
+</div>
+</section>
 
-<article>
-<h2 class="text-3xl font-bold text-gray-950 mb-4">Building the Community Together</h2>
-<p>We believe in collective strength. By investing in QUDx Himaya, you are not only supporting a financial model - you are helping to create a community of trust, dignity, and resilience. Together, we can redefine assurance in Africa and empower families for generations to come.</p>
-</article>
+<!-- ASSURANCE -->
+<section class="py-20 px-5 sm:px-6 bg-white">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-12" data-aos="fade-up">
+<h2 class="text-4xl md:text-5xl font-bold mb-4">Assurance for Investors</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">The model is designed around governance, reporting, legal structure, and secure infrastructure.</p>
+</div>
 
-<article class="bg-gray-50 border rounded-lg p-6">
-<h2 class="text-3xl font-bold text-gray-950 mb-4">Call to Action</h2>
-<p class="mb-6">Join us in this mission. Become a partner, invest in ethical assurance, and help us build a future where protection is accessible, halal, and dignified.</p>
-<p class="mb-6"><strong>Contact:</strong> partners@qudxinc.org</p>
-<a href="https://paystack.shop/pay/v2bhn6rfqe" target="_blank" class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold">Become an Investor</a>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<article class="investor-feature-card" data-aos="fade-up">
+<span class="investor-icon">SB</span>
+<h3>Sharia Board Oversight</h3>
+<p>Ensures compliance with Islamic principles.</p>
 </article>
+<article class="investor-feature-card" data-aos="fade-up" data-aos-delay="100">
+<span class="investor-icon">AR</span>
+<h3>Audit & Reporting</h3>
+<p>Regular financial reports shared with investors.</p>
+</article>
+<article class="investor-feature-card" data-aos="fade-up" data-aos-delay="200">
+<span class="investor-icon">LF</span>
+<h3>Legal Framework</h3>
+<p>Contracts aligned with local law and Islamic finance standards.</p>
+</article>
+<article class="investor-feature-card" data-aos="fade-up" data-aos-delay="300">
+<span class="investor-icon">SC</span>
+<h3>Security</h3>
+<p>SSL-protected site, PayPal integration, encrypted records.</p>
+</article>
+</div>
+</div>
+</section>
+
+<!-- COMMUNITY CTA -->
+<section class="py-20 px-5 sm:px-6">
+<div class="max-w-5xl mx-auto investor-cta-card text-center" data-aos="zoom-in">
+<h2 class="text-4xl md:text-5xl font-bold mb-5">Building the Community Together</h2>
+<p class="text-lg leading-8 text-gray-700 max-w-3xl mx-auto mb-6">We believe in collective strength. By investing in QUDx Himaya, you are not only supporting a financial model - you are helping to create a community of trust, dignity, and resilience. Together, we can redefine assurance in Africa and empower families for generations to come.</p>
+<p class="text-lg leading-8 text-gray-700 max-w-3xl mx-auto mb-8">Become a partner, invest in ethical assurance, and help us build a future where protection is accessible, halal, and dignified.</p>
+<p class="mb-8 text-gray-600"><strong>Contact:</strong> partners@qudxinc.org</p>
+<button onclick="openPaymentModal('Investor')" class="bg-green-700 text-white px-8 py-4 rounded-lg font-bold shadow-xl">Become an Investor</button>
 </div>
 </section>
 </main>
 
-<footer class="py-10 px-5 sm:px-6 text-center bg-white border-t">
-<p>partnership@qudxinc.org | support@qudxinc.org</p>
-<p class="text-sm text-gray-500 mt-2">Qudx Inc &copy; 2026</p>
+<div id="paymentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-5 flex items-center justify-center z-[75]">
+<div class="bg-white p-6 sm:p-8 rounded-lg w-full max-w-lg">
+<h3 class="text-2xl font-bold mb-3">Choose Payment Option</h3>
+<p id="paymentPlanText" class="text-gray-600 mb-6">Select how you would like to support QUDx.</p>
+<div class="grid sm:grid-cols-2 gap-4">
+<button id="paypalOption" type="button" disabled class="cursor-not-allowed border border-gray-300 bg-gray-100 text-gray-400 px-5 py-4 rounded-lg text-center font-semibold">PayPal <span class="block text-sm font-normal">Coming Soon</span></button>
+<a id="paystackOption" href="checkout.html?method=paystack" class="bg-green-700 text-white px-5 py-4 rounded-lg text-center font-semibold">Paystack / Visa / Mobile Money</a>
+</div>
+<button onclick="closePaymentModal()" class="mt-6 text-sm text-gray-600">Close</button>
+</div>
+</div>
+
+<footer id="contact" class="footer-shell px-5 sm:px-6 text-white">
+<div class="max-w-7xl mx-auto py-12">
+<div class="grid md:grid-cols-[1.2fr_1fr] gap-10 items-center">
+<div>
+<a href="index.html" class="inline-flex items-center gap-3 mb-5">
+<img src="LOGO.png" class="w-11 h-11" alt="QUDx Inc. logo">
+<span class="font-bold text-xl">QUDx Inc.</span>
+</a>
+<p class="text-white/80 max-w-xl">Ethical protection, structured services, and long-term value for families, partners, and communities.</p>
+<p class="mt-5 text-white/90">partnership@qudxinc.org | support@qudxinc.org</p>
+</div>
+<div class="flex flex-wrap md:justify-end gap-3">
+<a href="index.html#about" class="footer-link">About</a>
+<a href="index.html#solution" class="footer-link">Solution</a>
+<a href="index.html#how-it-works" class="footer-link">How It Works</a>
+<a href="index.html#projects" class="footer-link">Projects</a>
+<a href="checkout.html" class="footer-link">Cart</a>
+<a href="index.html#investor-options" class="footer-cta">Get Started</a>
+</div>
+</div>
+<div class="mt-10 pt-6 border-t border-white/15 text-sm text-white/70 flex flex-col sm:flex-row justify-between gap-3">
+<p>Qudx Inc &copy; 2026</p>
+<p>Built for long-term impact, integrity, and structure.</p>
+</div>
+</div>
 </footer>
 
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
