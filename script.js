@@ -33,6 +33,8 @@ const projectDetails = {
   }
 };
 
+const runtimeTranslationCache = {};
+
 const translations = {
   en: {
     brand: "QUDx Inc.",
@@ -96,12 +98,38 @@ const translations = {
     comingSoon: "Coming Soon",
     paystackOption: "Paystack / Visa / Mobile Money",
     cartShort: "Cart",
+    back: "Back",
+    checkoutEyebrow: "Secure checkout",
+    checkoutTitle: "Support QUDx Inc.",
+    fullName: "Full name",
+    fullNamePlaceholder: "Your full name",
+    emailAddress: "Email address",
+    emailPlaceholder: "you@example.com",
+    phoneNumber: "Phone number",
+    amount: "Amount",
+    amountPlaceholder: "Enter amount",
+    messageNote: "Message or investment note",
+    optional: "Optional",
+    paymentOptions: "Payment Options",
+    payWithPaystack: "Pay with Paystack",
+    paystackMethods: "Visa, card, and mobile money",
+    payWithPaypal: "Pay with PayPal",
+    investorBriefTitle: "Investor & Partner Brief",
+    becomeInvestor: "Become an Investor",
+    exploreBrief: "Explore Brief",
+    whyInvest: "Why Invest",
+    investorReturns: "Investor Returns",
+    assuranceForInvestors: "Assurance for Investors",
+    communityTogether: "Building the Community Together",
     footerText: "Ethical protection, structured services, and long-term value for families, partners, and communities.",
     footerTagline: "Built for long-term impact, integrity, and structure",
     modalTitleInvestor: "Investor Access",
     modalTitlePartner: "Partnership Request",
     modalTitleEarly: "Early Access",
-    paymentSelectedPrefix: "You selected"
+    paymentSelectedPrefix: "You selected",
+    learnMore: "Learn More",
+    iAmInterested: "I Am Interested",
+    investPartner: "Invest/Partner"
   },
   fr: {
     brand: "QUDx Inc.",
@@ -276,6 +304,102 @@ const translations = {
   }
 };
 
+const extendedTranslations = {
+  fr: {
+    learnMore: "En savoir plus",
+    iAmInterested: "Je suis interesse",
+    investPartner: "Investir/Partenaire",
+    aboutTitle: "Analyse de l'ancienne ere par QUDx",
+    solutionTitle: "Une nouvelle ere avec QUDx",
+    howTitle: "Comment ca marche",
+    howStep1: "S'inscrire",
+    howStep2: "Contribuer",
+    howStep3: "Suivre",
+    howStep4: "Reclamer et distribuer",
+    investorOptionsTitle: "Options investisseurs",
+    roadmapTitle: "Feuille de route QUDx",
+    projectsTitle: "Projets",
+    ctaTitle: "Participez a l'avenir de la protection ethique",
+    paymentTitle: "Choisissez une option de paiement",
+    paymentText: "Selectionnez comment vous souhaitez soutenir QUDx.",
+    close: "Fermer",
+    back: "Retour",
+    learnMore: "En savoir plus",
+    iAmInterested: "Je suis interesse",
+    investPartner: "Investir/Partenaire",
+    payWithPaystack: "Payer avec Paystack",
+    payWithPaypal: "Payer avec PayPal",
+    becomeInvestor: "Devenir investisseur",
+    exploreBrief: "Explorer le brief"
+  },
+  ar: {
+    learnMore: "تعرف على المزيد",
+    iAmInterested: "أنا مهتم",
+    investPartner: "استثمر/شريك",
+    aboutTitle: "تحليل الحقبة القديمة من QUDx",
+    solutionTitle: "حقبة جديدة مع QUDx",
+    howTitle: "كيف يعمل",
+    howStep1: "تسجيل",
+    howStep2: "مساهمة",
+    howStep3: "متابعة",
+    howStep4: "مطالبة وتوزيع",
+    investorOptionsTitle: "خيارات المستثمر",
+    roadmapTitle: "خارطة طريق QUDx",
+    projectsTitle: "المشاريع",
+    ctaTitle: "كن جزءا من مستقبل الحماية الاخلاقية",
+    paymentTitle: "اختر طريقة الدفع",
+    paymentText: "اختر كيف تريد دعم QUDx.",
+    close: "اغلاق",
+    back: "رجوع",
+    learnMore: "تعرف على المزيد",
+    iAmInterested: "أنا مهتم",
+    investPartner: "استثمر/شريك",
+    payWithPaystack: "ادفع عبر Paystack",
+    payWithPaypal: "ادفع عبر PayPal",
+    becomeInvestor: "كن مستثمرا",
+    exploreBrief: "استكشف الملخص"
+  },
+  it: {
+    learnMore: "Scopri di piu",
+    iAmInterested: "Sono interessato",
+    investPartner: "Investi/Partner"
+  },
+  es: {
+    learnMore: "Saber mas",
+    iAmInterested: "Estoy interesado",
+    investPartner: "Invertir/Socio"
+  },
+  ru: {
+    learnMore: "Подробнее",
+    iAmInterested: "Я заинтересован",
+    investPartner: "Инвестировать/Партнер"
+  },
+  id: {
+    learnMore: "Pelajari lebih lanjut",
+    iAmInterested: "Saya tertarik",
+    investPartner: "Investasi/Mitra"
+  },
+  zu: {
+    learnMore: "Funda kabanzi",
+    iAmInterested: "Nginesithakazelo",
+    investPartner: "Tshala imali/Uzakwethu"
+  },
+  zh: {
+    learnMore: "了解更多",
+    iAmInterested: "我感兴趣",
+    investPartner: "投资/合作伙伴"
+  },
+  ja: {
+    learnMore: "詳細を見る",
+    iAmInterested: "興味があります",
+    investPartner: "投資/提携"
+  }
+};
+
+Object.keys(extendedTranslations).forEach((language) => {
+  translations[language] = { ...translations[language], ...extendedTranslations[language] };
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   if (window.AOS) {
     AOS.init();
@@ -318,6 +442,74 @@ function applyLanguage(language) {
       element.textContent = dictionary[key];
     }
   });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+    const key = element.dataset.i18nPlaceholder;
+    if (dictionary[key]) {
+      element.setAttribute("placeholder", dictionary[key]);
+    }
+  });
+
+  applyAutoTranslations(language);
+}
+
+async function translateRuntimeText(text, language) {
+  if (!text || language === "en") return text;
+
+  const cacheKey = `${language}::${text}`;
+  if (runtimeTranslationCache[cacheKey]) {
+    return runtimeTranslationCache[cacheKey];
+  }
+
+  try {
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${encodeURIComponent(language)}&dt=t&q=${encodeURIComponent(text)}`;
+    const response = await fetch(url);
+    if (!response.ok) return text;
+
+    const payload = await response.json();
+    const translated = payload?.[0]?.map((item) => item?.[0] || "").join("") || text;
+    runtimeTranslationCache[cacheKey] = translated;
+    return translated;
+  } catch (_error) {
+    return text;
+  }
+}
+
+function shouldAutoTranslate(element) {
+  if (!element) return false;
+  if (element.closest("svg,script,style,noscript,textarea,select,option")) return false;
+  if (element.classList.contains("language-select")) return false;
+  if (element.hasAttribute("data-no-auto-translate")) return false;
+
+  const children = Array.from(element.children);
+  if (children.length && children.some((child) => child.tagName !== "BR")) return false;
+
+  const text = element.textContent?.trim() || "";
+  if (!text || text.length < 2) return false;
+  if (/[@]/.test(text) || /^https?:\/\//i.test(text)) return false;
+  if (/^[\d\W]+$/.test(text)) return false;
+  return true;
+}
+
+async function applyAutoTranslations(language) {
+  const candidates = Array.from(
+    document.querySelectorAll("h1,h2,h3,p,a,button,label,li,strong,span")
+  ).filter((element) => !element.hasAttribute("data-i18n") && shouldAutoTranslate(element));
+
+  for (const element of candidates) {
+    if (!element.dataset.baseText) {
+      element.dataset.baseText = element.textContent.trim();
+    }
+
+    const baseText = element.dataset.baseText;
+    if (language === "en") {
+      element.textContent = baseText;
+      continue;
+    }
+
+    const translated = await translateRuntimeText(baseText, language);
+    element.textContent = translated;
+  }
 }
 
 function toggleMenu() {

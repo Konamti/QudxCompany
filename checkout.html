@@ -13,7 +13,7 @@
 <div class="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex justify-between items-center">
 <a href="index.html" class="flex items-center gap-3">
 <img src="LOGO.png" class="w-10 h-10" alt="QUDx Inc. logo">
-<span class="font-bold text-lg">QUDx Inc.</span>
+<span class="font-bold text-lg" data-i18n="brand">QUDx Inc.</span>
 </a>
 <div class="flex items-center gap-4">
 <label class="language-switcher compact" aria-label="Choose language">
@@ -35,7 +35,7 @@
 <option value="ja">日本語</option>
 </select>
 </label>
-<a href="index.html#investor-options" class="text-sm font-semibold text-green-800 hover:text-green-700">Back</a>
+<a href="index.html#investor-options" class="text-sm font-semibold text-green-800 hover:text-green-700" data-i18n="back">Back</a>
 </div>
 </div>
 </header>
@@ -43,52 +43,52 @@
 <main class="pt-28 pb-16 px-5 sm:px-6">
 <section class="max-w-5xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-start">
 <div class="bg-white rounded-lg shadow-sm p-6 sm:p-8">
-<p class="text-sm uppercase tracking-wide text-green-800 font-bold mb-3">Secure checkout</p>
-<h1 class="text-4xl md:text-5xl font-bold mb-4">Support QUDx Inc.</h1>
+<p class="text-sm uppercase tracking-wide text-green-800 font-bold mb-3" data-i18n="checkoutEyebrow">Secure checkout</p>
+<h1 class="text-4xl md:text-5xl font-bold mb-4" data-i18n="checkoutTitle">Support QUDx Inc.</h1>
 <p class="text-gray-600 leading-7 mb-8">
 Enter your details and choose the amount you want to contribute. Payment is completed on Paystack or PayPal, so your card and wallet information stays with the payment provider.
 </p>
 
 <form id="checkoutForm" class="space-y-5">
 <div>
-<label for="fullName" class="block text-sm font-semibold mb-2">Full name</label>
-<input id="fullName" name="fullName" type="text" class="w-full border rounded-lg p-3" placeholder="Your full name" required>
+<label for="fullName" class="block text-sm font-semibold mb-2" data-i18n="fullName">Full name</label>
+<input id="fullName" name="fullName" type="text" class="w-full border rounded-lg p-3" data-i18n-placeholder="fullNamePlaceholder" placeholder="Your full name" required>
 </div>
 
 <div>
-<label for="email" class="block text-sm font-semibold mb-2">Email address</label>
-<input id="email" name="email" type="email" class="w-full border rounded-lg p-3" placeholder="you@example.com" required>
+<label for="email" class="block text-sm font-semibold mb-2" data-i18n="emailAddress">Email address</label>
+<input id="email" name="email" type="email" class="w-full border rounded-lg p-3" data-i18n-placeholder="emailPlaceholder" placeholder="you@example.com" required>
 </div>
 
 <div>
-<label for="phone" class="block text-sm font-semibold mb-2">Phone number</label>
+<label for="phone" class="block text-sm font-semibold mb-2" data-i18n="phoneNumber">Phone number</label>
 <input id="phone" name="phone" type="tel" class="w-full border rounded-lg p-3" placeholder="+225 ..." required>
 </div>
 
 <div>
-<label for="amount" class="block text-sm font-semibold mb-2">Amount</label>
-<input id="amount" name="amount" type="number" min="1" step="1" class="w-full border rounded-lg p-3" placeholder="Enter amount" required>
+<label for="amount" class="block text-sm font-semibold mb-2" data-i18n="amount">Amount</label>
+<input id="amount" name="amount" type="number" min="1" step="1" class="w-full border rounded-lg p-3" data-i18n-placeholder="amountPlaceholder" placeholder="Enter amount" required>
 </div>
 
 <div>
-<label for="message" class="block text-sm font-semibold mb-2">Message or investment note</label>
-<textarea id="message" name="message" class="w-full border rounded-lg p-3" rows="4" placeholder="Optional"></textarea>
+<label for="message" class="block text-sm font-semibold mb-2" data-i18n="messageNote">Message or investment note</label>
+<textarea id="message" name="message" class="w-full border rounded-lg p-3" rows="4" data-i18n-placeholder="optional" placeholder="Optional"></textarea>
 </div>
 </form>
 </div>
 
 <aside class="bg-white rounded-lg shadow-sm p-6 sm:p-8">
-<h2 class="text-2xl font-bold mb-2">Payment Options</h2>
+<h2 class="text-2xl font-bold mb-2" data-i18n="paymentOptions">Payment Options</h2>
 <p id="checkoutPlan" class="text-gray-600 mb-6">Plan: QUDx Support</p>
 
 <div class="space-y-4">
 <a id="paystackCheckout" href="https://paystack.shop/pay/v2bhn6rfqe" target="_blank" class="block bg-green-700 text-white px-5 py-4 rounded-lg text-center font-semibold">
-Pay with Paystack
-<span class="block text-sm font-normal opacity-90">Visa, card, and mobile money</span>
+<span data-i18n="payWithPaystack">Pay with Paystack</span>
+<span class="block text-sm font-normal opacity-90" data-i18n="paystackMethods">Visa, card, and mobile money</span>
 </a>
 
 <button id="paypalCheckout" type="button" disabled class="block w-full cursor-not-allowed border border-gray-300 bg-gray-100 text-gray-400 px-5 py-4 rounded-lg text-center font-semibold">
-Pay with PayPal
+<span data-i18n="payWithPaypal">Pay with PayPal</span>
 <span class="block text-sm font-normal">Coming Soon</span>
 </button>
 </div>
@@ -96,7 +96,7 @@ Pay with PayPal
 <div class="mt-8 bg-green-50 border border-green-100 rounded-lg p-4">
 <div class="flex gap-3">
 <span class="bg-green-700 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold">&#10003;</span>
-<p class="text-sm text-gray-700">Any amount donated is more than welcome. Thank you for your support.</p>
+<p class="text-sm text-gray-700" data-i18n="supportToastText">Any amount donated is more than welcome. Thank you for your support.</p>
 </div>
 </div>
 </aside>
