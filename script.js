@@ -39,6 +39,7 @@ const translations = {
     navAbout: "About",
     navSolution: "Solution",
     navHow: "How It Works",
+    navRoadmap: "Roadmap",
     navProjects: "Projects",
     navContact: "Contact",
     cartCheckout: "Cart / Checkout",
@@ -49,14 +50,65 @@ const translations = {
     heroText: "Sharia-compliant insurance and inheritance protection designed for trust, transparency, and generational security.",
     requestInvestor: "Request Investor Access",
     partnerWithUs: "Partner With Us",
+    joinEarlyAccess: "Join Early Access",
     subsidiaries: "Subsidiaries",
-    ongoingProjects: "Ongoing Projects"
+    ongoingProjects: "Ongoing Projects",
+    aboutTitle: "Old Era Analysis by QUDx",
+    aboutCard1Title: "Heavy Trust Issues",
+    aboutCard1Text: "Traditional insurance systems lack transparency and public confidence.",
+    aboutCard2Title: "Complex Systems",
+    aboutCard2Text: "Policies are difficult to understand and inaccessible to the majority.",
+    aboutCard3Title: "Informal Inheritance",
+    aboutCard3Text: "Families rely on unstructured, unreliable wealth transfer methods.",
+    solutionTitle: "A New Era With QUDx",
+    solutionCard1Title: "Halal Assurance",
+    solutionCard1Text: "Built on Takaful principles with ethical contribution models.",
+    solutionCard2Title: "Digital Infrastructure",
+    solutionCard2Text: "Automated workflows for claims, tracking, and inheritance distribution.",
+    solutionCard3Title: "Full Transparency",
+    solutionCard3Text: "Audit trails, governance, and clear communication at every step.",
+    howTitle: "How It Works",
+    howStep1: "Register",
+    howStep2: "Contribute",
+    howStep3: "Track",
+    howStep4: "Claim & Distribute",
+    pitchTitle: "QUDx Inc Pitch",
+    pitchText: "Building a value-driven ecosystem for the Ummah through ethical, structured, and scalable solutions.",
+    investorOptionsTitle: "Investor Options",
+    roadmapTitle: "QUDx Roadmap",
+    roadmapSeedTitle: "Seed (2026)",
+    roadmapSeedText: "Register Qudx Inc, finalize Himaya, join Muslim mentor networks.",
+    roadmapEarlyTitle: "Early (2027)",
+    roadmapEarlyText: "Pilot in Cote d'Ivoire, secure 500+ users, mosque/NGO partnerships.",
+    roadmapGrowthTitle: "Growth (2028)",
+    roadmapGrowthText: "Expand West Africa, launch QUDx Store and Properties.",
+    roadmapExpansionTitle: "Expansion (2029)",
+    roadmapExpansionText: "Enter MENA and diaspora markets, integrate digital inheritance.",
+    roadmapImpactTitle: "Impact (2030+)",
+    roadmapImpactText: "Sustainable ecosystem, IPO/cooperative model, global reach.",
+    founderNoteTitle: "A Note from the Founder",
+    projectsTitle: "Projects",
+    ctaTitle: "Be Part of the Future of Ethical Protection",
+    formSubmit: "Submit",
+    close: "Close",
+    paymentTitle: "Choose Payment Option",
+    paymentText: "Select how you would like to support QUDx.",
+    comingSoon: "Coming Soon",
+    paystackOption: "Paystack / Visa / Mobile Money",
+    cartShort: "Cart",
+    footerText: "Ethical protection, structured services, and long-term value for families, partners, and communities.",
+    footerTagline: "Built for long-term impact, integrity, and structure",
+    modalTitleInvestor: "Investor Access",
+    modalTitlePartner: "Partnership Request",
+    modalTitleEarly: "Early Access",
+    paymentSelectedPrefix: "You selected"
   },
   fr: {
     brand: "QUDx Inc.",
     navAbout: "A propos",
     navSolution: "Solution",
     navHow: "Fonctionnement",
+    navRoadmap: "Feuille de route",
     navProjects: "Projets",
     navContact: "Contact",
     cartCheckout: "Panier / Paiement",
@@ -75,6 +127,7 @@ const translations = {
     navAbout: "من نحن",
     navSolution: "الحل",
     navHow: "كيف يعمل",
+    navRoadmap: "خارطة الطريق",
     navProjects: "المشاريع",
     navContact: "اتصل بنا",
     cartCheckout: "السلة / الدفع",
@@ -93,6 +146,7 @@ const translations = {
     navAbout: "Chi siamo",
     navSolution: "Soluzione",
     navHow: "Come funziona",
+    navRoadmap: "Roadmap",
     navProjects: "Progetti",
     navContact: "Contatto",
     cartCheckout: "Carrello / Checkout",
@@ -111,6 +165,7 @@ const translations = {
     navAbout: "Acerca de",
     navSolution: "Solucion",
     navHow: "Como funciona",
+    navRoadmap: "Hoja de ruta",
     navProjects: "Proyectos",
     navContact: "Contacto",
     cartCheckout: "Carrito / Pago",
@@ -129,6 +184,7 @@ const translations = {
     navAbout: "О нас",
     navSolution: "Решение",
     navHow: "Как это работает",
+    navRoadmap: "Дорожная карта",
     navProjects: "Проекты",
     navContact: "Контакты",
     cartCheckout: "Корзина / Оплата",
@@ -147,6 +203,7 @@ const translations = {
     navAbout: "Tentang",
     navSolution: "Solusi",
     navHow: "Cara Kerja",
+    navRoadmap: "Peta jalan",
     navProjects: "Proyek",
     navContact: "Kontak",
     cartCheckout: "Keranjang / Checkout",
@@ -165,6 +222,7 @@ const translations = {
     navAbout: "Mayelana",
     navSolution: "Isixazululo",
     navHow: "Isebenza Kanjani",
+    navRoadmap: "Imephu yohambo",
     navProjects: "Amaphrojekthi",
     navContact: "Xhumana",
     cartCheckout: "Ikalishi / Inkokhelo",
@@ -183,6 +241,7 @@ const translations = {
     navAbout: "关于",
     navSolution: "解决方案",
     navHow: "运作方式",
+    navRoadmap: "路线图",
     navProjects: "项目",
     navContact: "联系",
     cartCheckout: "购物车 / 结账",
@@ -201,6 +260,7 @@ const translations = {
     navAbout: "概要",
     navSolution: "ソリューション",
     navHow: "仕組み",
+    navRoadmap: "ロードマップ",
     navProjects: "プロジェクト",
     navContact: "連絡先",
     cartCheckout: "カート / 決済",
@@ -248,7 +308,7 @@ function initLanguageSelector() {
 }
 
 function applyLanguage(language) {
-  const dictionary = translations[language] || translations.en;
+  const dictionary = { ...translations.en, ...(translations[language] || {}) };
   document.documentElement.lang = language;
   document.body.dir = language === "ar" ? "rtl" : "ltr";
 
@@ -274,10 +334,11 @@ function openForm(type) {
 
   if (!modal || !title) return;
 
+  const dictionary = { ...translations.en, ...(translations[localStorage.getItem("qudxLanguage") || "en"] || {}) };
   const titles = {
-    investor: "Investor Access",
-    partner: "Partnership Request",
-    early: "Early Access"
+    investor: dictionary.modalTitleInvestor,
+    partner: dictionary.modalTitlePartner,
+    early: dictionary.modalTitleEarly
   };
 
   title.innerText = titles[type] || "Contact QUDx";
@@ -338,8 +399,9 @@ function openPaymentModal(plan) {
 
   if (!modal || !planText || !paypalOption || !paystackOption) return;
 
+  const dictionary = { ...translations.en, ...(translations[localStorage.getItem("qudxLanguage") || "en"] || {}) };
   const checkoutPlan = encodeURIComponent(plan || "QUDx Support");
-  planText.innerText = `You selected ${plan}. Choose a secure checkout option below.`;
+  planText.innerText = `${dictionary.paymentSelectedPrefix} ${plan}. ${dictionary.paymentText}`;
   paystackOption.href = `checkout.html?method=paystack&plan=${checkoutPlan}`;
   modal.classList.remove("hidden");
 }

@@ -24,7 +24,7 @@
 <a href="#about" class="hover:text-green-700" data-i18n="navAbout">About</a>
 <a href="#solution" class="hover:text-green-700" data-i18n="navSolution">Solution</a>
 <a href="#how-it-works" class="hover:text-green-700" data-i18n="navHow">How It Works</a>
-<a href="#roadmap" class="hover:text-green-700">Roadmap</a>
+<a href="#roadmap" class="hover:text-green-700" data-i18n="navRoadmap">Roadmap</a>
 <a href="#projects" class="hover:text-green-700" data-i18n="navProjects">Projects</a>
 <a href="#contact" class="hover:text-green-700" data-i18n="navContact">Contact</a>
 </nav>
@@ -61,7 +61,7 @@ Get Started
 </a>
 </div>
 
-<div class="lg:hidden flex items-center gap-3">
+<div class="header-mobile-tools lg:hidden flex items-center gap-3">
 <label class="language-switcher compact" aria-label="Choose language">
 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 <circle cx="12" cy="12" r="10"></circle>
@@ -98,7 +98,7 @@ Menu
 <a href="#about" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navAbout">About</a>
 <a href="#solution" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navSolution">Solution</a>
 <a href="#how-it-works" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navHow">How It Works</a>
-<a href="#roadmap" onclick="closeMenu()" class="block py-3 hover:text-green-700">Roadmap</a>
+<a href="#roadmap" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navRoadmap">Roadmap</a>
 <a href="#projects" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navProjects">Projects</a>
 <a href="#contact" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navContact">Contact</a>
 <a href="checkout.html" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="cartCheckout">Cart / Checkout</a>
@@ -177,57 +177,57 @@ Building ethical protection systems for families, communities, investors, and pa
 
 <!-- PROBLEM -->
 <section id="about" class="py-12 md:py-14 max-w-6xl mx-auto px-5 sm:px-6 text-center">
-<h2 class="text-3xl font-bold mb-8">Old Era Analysis by QUDx</h2>
+<h2 class="text-3xl font-bold mb-8" data-i18n="aboutTitle">Old Era Analysis by QUDx</h2>
 
 <div class="grid md:grid-cols-3 gap-6">
 <div data-aos="fade-up">
-<h3 class="font-semibold text-xl mb-3">Heavy Trust Issues</h3>
-<p>Traditional insurance systems lack transparency and public confidence.</p>
+<h3 class="font-semibold text-xl mb-3" data-i18n="aboutCard1Title">Heavy Trust Issues</h3>
+<p data-i18n="aboutCard1Text">Traditional insurance systems lack transparency and public confidence.</p>
 </div>
 
 <div data-aos="fade-up" data-aos-delay="200">
-<h3 class="font-semibold text-xl mb-3">Complex Systems</h3>
-<p>Policies are difficult to understand and inaccessible to the majority.</p>
+<h3 class="font-semibold text-xl mb-3" data-i18n="aboutCard2Title">Complex Systems</h3>
+<p data-i18n="aboutCard2Text">Policies are difficult to understand and inaccessible to the majority.</p>
 </div>
 
 <div data-aos="fade-up" data-aos-delay="400">
-<h3 class="font-semibold text-xl mb-3">Informal Inheritance</h3>
-<p>Families rely on unstructured, unreliable wealth transfer methods.</p>
+<h3 class="font-semibold text-xl mb-3" data-i18n="aboutCard3Title">Informal Inheritance</h3>
+<p data-i18n="aboutCard3Text">Families rely on unstructured, unreliable wealth transfer methods.</p>
 </div>
 </div>
 </section>
 
 <!-- SOLUTION -->
 <section id="solution" class="bg-gray-50 py-20 text-center px-5 sm:px-6">
-<h2 class="text-3xl font-bold mb-12">A New Era With QUDx</h2>
+<h2 class="text-3xl font-bold mb-12" data-i18n="solutionTitle">A New Era With QUDx</h2>
 
 <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 <div data-aos="zoom-in">
-<h3 class="font-semibold text-xl mb-3">Halal Assurance</h3>
-<p>Built on Takaful principles with ethical contribution models.</p>
+<h3 class="font-semibold text-xl mb-3" data-i18n="solutionCard1Title">Halal Assurance</h3>
+<p data-i18n="solutionCard1Text">Built on Takaful principles with ethical contribution models.</p>
 </div>
 
 <div data-aos="zoom-in" data-aos-delay="200">
-<h3 class="font-semibold text-xl mb-3">Digital Infrastructure</h3>
-<p>Automated workflows for claims, tracking, and inheritance distribution.</p>
+<h3 class="font-semibold text-xl mb-3" data-i18n="solutionCard2Title">Digital Infrastructure</h3>
+<p data-i18n="solutionCard2Text">Automated workflows for claims, tracking, and inheritance distribution.</p>
 </div>
 
 <div data-aos="zoom-in" data-aos-delay="400">
-<h3 class="font-semibold text-xl mb-3">Full Transparency</h3>
-<p>Audit trails, governance, and clear communication at every step.</p>
+<h3 class="font-semibold text-xl mb-3" data-i18n="solutionCard3Title">Full Transparency</h3>
+<p data-i18n="solutionCard3Text">Audit trails, governance, and clear communication at every step.</p>
 </div>
 </div>
 </section>
 
 <!-- HOW IT WORKS -->
 <section id="how-it-works" class="py-20 px-5 sm:px-6 text-center">
-<h2 class="text-3xl font-bold mb-12">How It Works</h2>
+<h2 class="text-3xl font-bold mb-12" data-i18n="howTitle">How It Works</h2>
 
 <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-<div class="text-green-700 text-xl md:text-2xl font-semibold" data-aos="fade-up">Register</div>
-<div class="text-green-700 text-xl md:text-2xl font-semibold" data-aos="fade-up" data-aos-delay="150">Contribute</div>
-<div class="text-green-700 text-xl md:text-2xl font-semibold" data-aos="fade-up" data-aos-delay="300">Track</div>
-<div class="text-green-700 text-xl md:text-2xl font-semibold" data-aos="fade-up" data-aos-delay="450">Claim & Distribute</div>
+<div class="text-green-700 text-xl md:text-2xl font-semibold" data-aos="fade-up" data-i18n="howStep1">Register</div>
+<div class="text-green-700 text-xl md:text-2xl font-semibold" data-aos="fade-up" data-aos-delay="150" data-i18n="howStep2">Contribute</div>
+<div class="text-green-700 text-xl md:text-2xl font-semibold" data-aos="fade-up" data-aos-delay="300" data-i18n="howStep3">Track</div>
+<div class="text-green-700 text-xl md:text-2xl font-semibold" data-aos="fade-up" data-aos-delay="450" data-i18n="howStep4">Claim & Distribute</div>
 </div>
 </section>
 
@@ -235,8 +235,8 @@ Building ethical protection systems for families, communities, investors, and pa
 <section class="bg-gray-100 py-20 px-5 sm:px-6">
 <div class="max-w-6xl mx-auto">
 <div class="text-center mb-12" data-aos="fade-up">
-<h2 class="text-4xl md:text-6xl font-bold mb-4">QUDx Inc Pitch</h2>
-<p class="max-w-3xl mx-auto text-gray-600 text-lg">Building a value-driven ecosystem for the Ummah through ethical, structured, and scalable solutions.</p>
+<h2 class="text-4xl md:text-6xl font-bold mb-4" data-i18n="pitchTitle">QUDx Inc Pitch</h2>
+<p class="max-w-3xl mx-auto text-gray-600 text-lg" data-i18n="pitchText">Building a value-driven ecosystem for the Ummah through ethical, structured, and scalable solutions.</p>
 </div>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -271,7 +271,7 @@ Building ethical protection systems for families, communities, investors, and pa
 <!-- INVESTOR OPTIONS -->
 <section id="investor-options" class="bg-white py-20 px-5 sm:px-6">
 <div class="max-w-7xl mx-auto">
-<h2 class="text-4xl md:text-6xl font-bold text-center mb-12" data-aos="fade-up">Investor Options</h2>
+<h2 class="text-4xl md:text-6xl font-bold text-center mb-12" data-aos="fade-up" data-i18n="investorOptionsTitle">Investor Options</h2>
 
 <div class="grid md:grid-cols-3 gap-8">
 <article class="relative border rounded-lg p-7 shadow-sm" data-aos="fade-up">
@@ -308,41 +308,41 @@ Building ethical protection systems for families, communities, investors, and pa
 <!-- ROADMAP -->
 <section id="roadmap" class="bg-gray-50 py-20 px-5 sm:px-6">
 <div class="max-w-6xl mx-auto">
-<h2 class="text-3xl md:text-5xl font-bold text-center mb-12">QUDx Roadmap</h2>
+<h2 class="text-3xl md:text-5xl font-bold text-center mb-12" data-i18n="roadmapTitle">QUDx Roadmap</h2>
 
 <div class="timeline">
 <div class="timeline-container left" data-aos="fade-right">
 <div class="timeline-content">
-<h3>Seed (2026)</h3>
-<p>Register Qudx Inc, finalize Himaya, join Muslim mentor networks.</p>
+<h3 data-i18n="roadmapSeedTitle">Seed (2026)</h3>
+<p data-i18n="roadmapSeedText">Register Qudx Inc, finalize Himaya, join Muslim mentor networks.</p>
 </div>
 </div>
 
 <div class="timeline-container right" data-aos="fade-left">
 <div class="timeline-content">
-<h3>Early (2027)</h3>
-<p>Pilot in Cote d'Ivoire, secure 500+ users, mosque/NGO partnerships.</p>
+<h3 data-i18n="roadmapEarlyTitle">Early (2027)</h3>
+<p data-i18n="roadmapEarlyText">Pilot in Cote d'Ivoire, secure 500+ users, mosque/NGO partnerships.</p>
 </div>
 </div>
 
 <div class="timeline-container left" data-aos="fade-right">
 <div class="timeline-content">
-<h3>Growth (2028)</h3>
-<p>Expand West Africa, launch QUDx Store and Properties.</p>
+<h3 data-i18n="roadmapGrowthTitle">Growth (2028)</h3>
+<p data-i18n="roadmapGrowthText">Expand West Africa, launch QUDx Store and Properties.</p>
 </div>
 </div>
 
 <div class="timeline-container right" data-aos="fade-left">
 <div class="timeline-content">
-<h3>Expansion (2029)</h3>
-<p>Enter MENA and diaspora markets, integrate digital inheritance.</p>
+<h3 data-i18n="roadmapExpansionTitle">Expansion (2029)</h3>
+<p data-i18n="roadmapExpansionText">Enter MENA and diaspora markets, integrate digital inheritance.</p>
 </div>
 </div>
 
 <div class="timeline-container left" data-aos="fade-right">
 <div class="timeline-content">
-<h3>Impact (2030+)</h3>
-<p>Sustainable ecosystem, IPO/cooperative model, global reach.</p>
+<h3 data-i18n="roadmapImpactTitle">Impact (2030+)</h3>
+<p data-i18n="roadmapImpactText">Sustainable ecosystem, IPO/cooperative model, global reach.</p>
 </div>
 </div>
 </div>
@@ -352,7 +352,7 @@ Building ethical protection systems for families, communities, investors, and pa
 <!-- FOUNDER NOTE -->
 <section class="bg-[#f7f8f2] py-20 px-5 sm:px-6 text-center">
 <div class="max-w-3xl mx-auto" data-aos="fade-up">
-<h2 class="text-3xl md:text-4xl font-serif italic text-green-800 mb-6">A Note from the Founder</h2>
+<h2 class="text-3xl md:text-4xl font-serif italic text-green-800 mb-6" data-i18n="founderNoteTitle">A Note from the Founder</h2>
 <div class="w-28 h-1 bg-green-800 mx-auto mb-8"></div>
 <div class="space-y-6 text-lg md:text-xl leading-9 text-gray-700">
 <p>Qudx did not start as a business. It started as a response to a problem I could clearly see.</p>
@@ -367,7 +367,7 @@ Building ethical protection systems for families, communities, investors, and pa
 <!-- PROJECTS -->
 <section id="projects" class="gradient text-white py-20 md:py-28 px-5 sm:px-6 overflow-hidden">
 <div class="max-w-7xl mx-auto">
-<h2 class="text-5xl md:text-7xl font-bold mb-12 text-center" data-aos="fade-up">Projects</h2>
+<h2 class="text-5xl md:text-7xl font-bold mb-12 text-center" data-aos="fade-up" data-i18n="projectsTitle">Projects</h2>
 
 <div class="relative" data-aos="fade-up" data-aos-delay="200">
 <button onclick="moveCarousel('left')" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white text-green-800 shadow-lg w-11 h-11 rounded-full flex items-center justify-center" aria-label="Previous project">&#8592;</button>
@@ -429,18 +429,18 @@ Building ethical protection systems for families, communities, investors, and pa
 
 <!-- CTA SECTION -->
 <section id="cta" class="gradient text-white py-20 px-5 sm:px-6 text-center">
-<h2 class="text-3xl font-bold mb-6">Be Part of the Future of Ethical Protection</h2>
+<h2 class="text-3xl font-bold mb-6" data-i18n="ctaTitle">Be Part of the Future of Ethical Protection</h2>
 
 <div class="flex flex-col md:flex-row justify-center gap-4">
-<button onclick="openForm('investor')" class="bg-white text-green-800 px-6 py-3 rounded-lg">
+<button onclick="openForm('investor')" class="bg-white text-green-800 px-6 py-3 rounded-lg" data-i18n="requestInvestor">
 Investor Access
 </button>
 
-<button onclick="openForm('partner')" class="border border-white px-6 py-3 rounded-lg">
+<button onclick="openForm('partner')" class="border border-white px-6 py-3 rounded-lg" data-i18n="partnerWithUs">
 Partner With Us
 </button>
 
-<button onclick="openForm('early')" class="bg-green-900 px-6 py-3 rounded-lg">
+<button onclick="openForm('early')" class="bg-green-900 px-6 py-3 rounded-lg" data-i18n="joinEarlyAccess">
 Join Early Access
 </button>
 </div>
@@ -456,10 +456,10 @@ Join Early Access
 <input type="email" placeholder="Email" class="w-full mb-3 p-3 border" required>
 <textarea placeholder="Message" class="w-full mb-3 p-3 border"></textarea>
 
-<button type="submit" class="bg-green-700 text-white px-5 py-2 rounded">Submit</button>
+<button type="submit" class="bg-green-700 text-white px-5 py-2 rounded" data-i18n="formSubmit">Submit</button>
 </form>
 
-<button onclick="closeForm()" class="mt-4 text-sm">Close</button>
+<button onclick="closeForm()" class="mt-4 text-sm" data-i18n="close">Close</button>
 </div>
 </div>
 
@@ -468,7 +468,7 @@ Join Early Access
 <div class="bg-white p-6 sm:p-8 rounded-lg w-full max-w-lg">
 <h3 id="projectTitle" class="text-2xl font-bold mb-4"></h3>
 <ul id="projectPoints" class="space-y-3 text-gray-700 list-disc pl-5"></ul>
-<button onclick="closeProjectModal()" class="mt-6 bg-green-700 text-white px-5 py-2 rounded-lg">Close</button>
+<button onclick="closeProjectModal()" class="mt-6 bg-green-700 text-white px-5 py-2 rounded-lg" data-i18n="close">Close</button>
 </div>
 </div>
 
@@ -482,13 +482,13 @@ Join Early Access
 <!-- PAYMENT MODAL -->
 <div id="paymentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-5 flex items-center justify-center z-[75]">
 <div class="bg-white p-6 sm:p-8 rounded-lg w-full max-w-lg">
-<h3 class="text-2xl font-bold mb-3">Choose Payment Option</h3>
-<p id="paymentPlanText" class="text-gray-600 mb-6">Select how you would like to support QUDx.</p>
+<h3 class="text-2xl font-bold mb-3" data-i18n="paymentTitle">Choose Payment Option</h3>
+<p id="paymentPlanText" class="text-gray-600 mb-6" data-i18n="paymentText">Select how you would like to support QUDx.</p>
 <div class="grid sm:grid-cols-2 gap-4">
-<button id="paypalOption" type="button" disabled class="cursor-not-allowed border border-gray-300 bg-gray-100 text-gray-400 px-5 py-4 rounded-lg text-center font-semibold">PayPal <span class="block text-sm font-normal">Coming Soon</span></button>
-<a id="paystackOption" href="checkout.html?method=paystack" class="bg-green-700 text-white px-5 py-4 rounded-lg text-center font-semibold">Paystack / Visa / Mobile Money</a>
+<button id="paypalOption" type="button" disabled class="cursor-not-allowed border border-gray-300 bg-gray-100 text-gray-400 px-5 py-4 rounded-lg text-center font-semibold">PayPal <span class="block text-sm font-normal" data-i18n="comingSoon">Coming Soon</span></button>
+<a id="paystackOption" href="checkout.html?method=paystack" class="bg-green-700 text-white px-5 py-4 rounded-lg text-center font-semibold" data-i18n="paystackOption">Paystack / Visa / Mobile Money</a>
 </div>
-<button onclick="closePaymentModal()" class="mt-6 text-sm text-gray-600">Close</button>
+<button onclick="closePaymentModal()" class="mt-6 text-sm text-gray-600" data-i18n="close">Close</button>
 </div>
 </div>
 
@@ -501,23 +501,23 @@ Join Early Access
 <img src="LOGO.png" class="w-11 h-11" alt="QUDx Inc. logo">
 <span class="font-bold text-xl">QUDx Inc.</span>
 </a>
-<p class="text-white/80 max-w-xl">Ethical protection, structured services, and long-term value for families, partners, and communities.</p>
+<p class="text-white/80 max-w-xl" data-i18n="footerText">Ethical protection, structured services, and long-term value for families, partners, and communities.</p>
 <p class="mt-5 text-white/90">partnership@qudxinc.org | support@qudxinc.org</p>
 </div>
 
 <div class="flex flex-wrap md:justify-end gap-3">
-<a href="#about" class="footer-link">About</a>
-<a href="#solution" class="footer-link">Solution</a>
-<a href="#how-it-works" class="footer-link">How It Works</a>
+<a href="#about" class="footer-link" data-i18n="navAbout">About</a>
+<a href="#solution" class="footer-link" data-i18n="navSolution">Solution</a>
+<a href="#how-it-works" class="footer-link" data-i18n="navHow">How It Works</a>
 <a href="#roadmap" class="footer-link">Roadmap</a>
-<a href="#projects" class="footer-link">Projects</a>
-<a href="checkout.html" class="footer-link">Cart</a>
-<a href="investor-partner.html" class="footer-cta">Get Started</a>
+<a href="#projects" class="footer-link" data-i18n="navProjects">Projects</a>
+<a href="checkout.html" class="footer-link" data-i18n="cartShort">Cart</a>
+<a href="investor-partner.html" class="footer-cta" data-i18n="getStarted">Get Started</a>
 </div>
 </div>
 <div class="mt-10 pt-6 border-t border-white/15 text-sm text-white/70 flex flex-col sm:flex-row justify-between gap-3">
 <p>Qudx Inc &copy; 2026</p>
-<p>Built for long-term impact, integrity, and structure.</p>
+<p data-i18n="footerTagline">Built for long-term impact, integrity, and structure.</p>
 </div>
 </div>
 </footer>
