@@ -431,24 +431,60 @@ function initLanguageSelector() {
   applyLanguage(savedLanguage);
 }
 
-function applyLanguage(language) {
-  const dictionary = { ...translations.en, ...(translations[language] || {}) };
+async function applyLanguage(language) {
+  const baseDictionary = translations.en || {};
+  const selectedDictionary = translations[language] || {};
+  const dictionary = { ...baseDictionary, ...selectedDictionary };
   document.documentElement.lang = language;
   document.body.dir = language === "ar" ? "rtl" : "ltr";
 
-  document.querySelectorAll("[data-i18n]").forEach((element) => {
+  const textNodes = Array.from(document.querySelectorAll("[data-i18n]"));
+  for (const element of textNodes) {
     const key = element.dataset.i18n;
-    if (dictionary[key]) {
-      element.textContent = dictionary[key];
-    }
-  });
+    if (!key) continue;
 
-  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
-    const key = element.dataset.i18nPlaceholder;
-    if (dictionary[key]) {
-      element.setAttribute("placeholder", dictionary[key]);
+    const baseText = baseDictionary[key] || element.dataset.baseText || element.textContent.trim();
+    if (!element.dataset.baseText && baseText) {
+      element.dataset.baseText = baseText;
     }
-  });
+
+    if (language === "en") {
+      if (baseText) element.textContent = baseText;
+      continue;
+    }
+
+    if (selectedDictionary[key]) {
+      element.textContent = selectedDictionary[key];
+      continue;
+    }
+
+    const translated = await translateRuntimeText(baseText, language);
+    element.textContent = translated || baseText;
+  }
+
+  const placeholderNodes = Array.from(document.querySelectorAll("[data-i18n-placeholder]"));
+  for (const element of placeholderNodes) {
+    const key = element.dataset.i18nPlaceholder;
+    if (!key) continue;
+
+    const basePlaceholder = baseDictionary[key] || element.dataset.basePlaceholder || element.getAttribute("placeholder") || "";
+    if (!element.dataset.basePlaceholder && basePlaceholder) {
+      element.dataset.basePlaceholder = basePlaceholder;
+    }
+
+    if (language === "en") {
+      element.setAttribute("placeholder", basePlaceholder);
+      continue;
+    }
+
+    if (selectedDictionary[key]) {
+      element.setAttribute("placeholder", selectedDictionary[key]);
+      continue;
+    }
+
+    const translated = await translateRuntimeText(basePlaceholder, language);
+    element.setAttribute("placeholder", translated || basePlaceholder);
+  }
 
   applyAutoTranslations(language);
 }
