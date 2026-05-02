@@ -402,13 +402,23 @@ Object.keys(extendedTranslations).forEach((language) => {
 
 document.addEventListener("DOMContentLoaded", () => {
   if (window.AOS) {
-    AOS.init();
+    AOS.init({
+      duration: 800,
+      once: false,
+      mirror: true,
+      offset: 100,
+      easing: 'ease-in-out-quad'
+    });
   }
+  
+  // Page load animation
+  document.body.style.opacity = '0';
+  document.body.style.animation = 'pageLoadFade 0.8s ease-out forwards';
 
   initLanguageSelector();
   startProjectAutoScroll();
   initCheckoutPage();
-  initBrandStats();
+  initCountStats();
 });
 
 function initLanguageSelector() {
@@ -431,17 +441,18 @@ function initLanguageSelector() {
   applyLanguage(savedLanguage);
 }
 
-async function applyLanguage(language) {
+function applyLanguage(language) {
   const baseDictionary = translations.en || {};
   const selectedDictionary = translations[language] || {};
-  const dictionary = { ...baseDictionary, ...selectedDictionary };
+  const textDirection = language === "ar" ? "rtl" : "ltr";
   document.documentElement.lang = language;
-  document.body.dir = language === "ar" ? "rtl" : "ltr";
+  document.documentElement.dir = textDirection;
+  document.body.dir = textDirection;
 
   const textNodes = Array.from(document.querySelectorAll("[data-i18n]"));
-  for (const element of textNodes) {
+  textNodes.forEach((element) => {
     const key = element.dataset.i18n;
-    if (!key) continue;
+    if (!key) return;
 
     const baseText = baseDictionary[key] || element.dataset.baseText || element.textContent.trim();
     if (!element.dataset.baseText && baseText) {
@@ -450,22 +461,23 @@ async function applyLanguage(language) {
 
     if (language === "en") {
       if (baseText) element.textContent = baseText;
-      continue;
+      return;
     }
 
     if (selectedDictionary[key]) {
       element.textContent = selectedDictionary[key];
-      continue;
+      return;
     }
 
-    const translated = await translateRuntimeText(baseText, language);
-    element.textContent = translated || baseText;
-  }
+    translateRuntimeText(baseText, language).then((translated) => {
+      element.textContent = translated;
+    });
+  });
 
   const placeholderNodes = Array.from(document.querySelectorAll("[data-i18n-placeholder]"));
-  for (const element of placeholderNodes) {
+  placeholderNodes.forEach((element) => {
     const key = element.dataset.i18nPlaceholder;
-    if (!key) continue;
+    if (!key) return;
 
     const basePlaceholder = baseDictionary[key] || element.dataset.basePlaceholder || element.getAttribute("placeholder") || "";
     if (!element.dataset.basePlaceholder && basePlaceholder) {
@@ -474,19 +486,76 @@ async function applyLanguage(language) {
 
     if (language === "en") {
       element.setAttribute("placeholder", basePlaceholder);
-      continue;
+      return;
     }
 
     if (selectedDictionary[key]) {
       element.setAttribute("placeholder", selectedDictionary[key]);
+      return;
+    }
+
+    translateRuntimeText(basePlaceholder, language).then((translated) => {
+      element.setAttribute("placeholder", translated);
+    });
+  });
+
+  translatePlaceholderValues(language);
+  scheduleAutoTranslations(language);
+}
+
+function translatePlaceholderValues(language) {
+  const elements = Array.from(document.querySelectorAll("input[placeholder],textarea[placeholder]"));
+  if (!elements.length) return;
+
+  elements.forEach((element) => {
+    if (element.dataset.noAutoTranslate) return;
+    const placeholderText = element.getAttribute("placeholder") || "";
+    if (!placeholderText.trim()) return;
+
+    if (!element.dataset.basePlaceholder) {
+      element.dataset.basePlaceholder = placeholderText;
+    }
+
+    if (language === "en") {
+      element.setAttribute("placeholder", element.dataset.basePlaceholder);
+      return;
+    }
+
+    translateRuntimeText(element.dataset.basePlaceholder, language).then((translated) => {
+      element.setAttribute("placeholder", translated);
+    });
+  });
+}
+
+async function applyAutoTranslations(language) {
+  if (language === "en") {
+    const translatedNodes = document.querySelectorAll("[data-auto-translated='true']");
+    translatedNodes.forEach((element) => {
+      if (element.dataset.baseText) element.textContent = element.dataset.baseText;
+      element.dataset.autoTranslated = "false";
+    });
+    return;
+  }
+
+  const candidates = Array.from(
+    document.querySelectorAll("h1,h2,h3,h4,h5,h6,p,a,button,label,li,strong,em,small,span")
+  ).filter((element) => !element.hasAttribute("data-i18n") && shouldAutoTranslate(element));
+
+  for (const element of candidates) {
+    if (!element.dataset.baseText) {
+      element.dataset.baseText = element.textContent.trim();
+    }
+
+    const baseText = element.dataset.baseText;
+    if (language === "en") {
+      element.textContent = baseText;
       continue;
     }
 
-    const translated = await translateRuntimeText(basePlaceholder, language);
-    element.setAttribute("placeholder", translated || basePlaceholder);
+    const translated = await translateRuntimeText(baseText, language);
+    element.textContent = translated;
+    element.dataset.autoTranslated = "true";
   }
-
-  applyAutoTranslations(language);
 }
 
 async function translateRuntimeText(text, language) {
@@ -527,9 +596,27 @@ function shouldAutoTranslate(element) {
   return true;
 }
 
+function scheduleAutoTranslations(language) {
+  const run = () => applyAutoTranslations(language);
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(run, { timeout: 1200 });
+  } else {
+    window.setTimeout(run, 1);
+  }
+}
+
 async function applyAutoTranslations(language) {
+  if (language === "en") {
+    const translatedNodes = document.querySelectorAll("[data-auto-translated='true']");
+    translatedNodes.forEach((element) => {
+      if (element.dataset.baseText) element.textContent = element.dataset.baseText;
+      element.dataset.autoTranslated = "false";
+    });
+    return;
+  }
+
   const candidates = Array.from(
-    document.querySelectorAll("h1,h2,h3,p,a,button,label,li,strong,span")
+    document.querySelectorAll("h1,h2,h3,h4,h5,h6,p,a,button,label,li,strong,em,small,span")
   ).filter((element) => !element.hasAttribute("data-i18n") && shouldAutoTranslate(element));
 
   for (const element of candidates) {
@@ -545,6 +632,7 @@ async function applyAutoTranslations(language) {
 
     const translated = await translateRuntimeText(baseText, language);
     element.textContent = translated;
+    element.dataset.autoTranslated = "true";
   }
 }
 
@@ -673,44 +761,47 @@ function initCheckoutPage() {
   }
 }
 
-function initBrandStats() {
-  const stats = document.querySelectorAll(".stat-value");
-  const statsWrap = document.getElementById("brandStats");
+function initCountStats() {
+  const groups = Array.from(document.querySelectorAll(".hero-visual-panel, #brandStats")).filter(Boolean);
 
-  if (!stats.length || !statsWrap) return;
+  if (!groups.length) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
 
+        const stats = entry.target.querySelectorAll(".count-stat, .stat-value");
         stats.forEach((stat) => animateStat(stat));
-        launchStatsBurst();
-        observer.disconnect();
+        launchStatsBurst(entry.target);
+        observer.unobserve(entry.target);
       });
     },
     { threshold: 0.45 }
   );
 
-  observer.observe(statsWrap);
+  groups.forEach((group) => observer.observe(group));
 }
 
 function animateStat(stat) {
   const target = Number(stat.dataset.count || 0);
   const pad = Number(stat.dataset.pad || 0);
+  const decimals = Number(stat.dataset.decimals || 0);
+  const prefix = stat.dataset.prefix || "";
   const suffix = stat.dataset.suffix || "";
-  const duration = 3200;
+  const duration = 2300;
   const start = performance.now();
 
   stat.classList.add("is-loading");
 
   function tick(now) {
     const progress = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const value = Math.round(target * eased);
-    const formatted = pad ? String(value).padStart(pad, "0") : String(value).padStart(2, "0");
+    const eased = 1 - Math.pow(1 - progress, 3.2);
+    const rawValue = target * eased;
+    const value = decimals ? rawValue.toFixed(decimals) : Math.round(rawValue);
+    const formatted = pad && !decimals ? String(value).padStart(pad, "0") : String(value).padStart(2, "0");
 
-    stat.textContent = `${formatted}${suffix}`;
+    stat.textContent = `${prefix}${formatted}${suffix}`;
 
     if (progress < 1) {
       requestAnimationFrame(tick);
@@ -722,17 +813,17 @@ function animateStat(stat) {
   requestAnimationFrame(tick);
 }
 
-function launchStatsBurst() {
-  const burst = document.getElementById("statsBurst");
+function launchStatsBurst(container = document) {
+  const burst = container.querySelector(".stats-burst") || document.getElementById("statsBurst");
   if (!burst) return;
 
-  const colors = ["#1c730c", "#c8a951", "#16a34a", "#f97316", "#0f172a"];
+  const colors = ["#c8a951", "#ffffff", "#16a34a", "#38bdf8", "#f97316"];
   burst.innerHTML = "";
 
-  for (let index = 0; index < 34; index += 1) {
+  for (let index = 0; index < 42; index += 1) {
     const piece = document.createElement("span");
     const angle = Math.random() * Math.PI * 2;
-    const distance = 46 + Math.random() * 116;
+    const distance = 52 + Math.random() * 128;
     const x = 18 + Math.random() * 64;
     const y = 22 + Math.random() * 42;
 
@@ -748,4 +839,25 @@ function launchStatsBurst() {
   setTimeout(() => {
     burst.innerHTML = "";
   }, 2000);
+}
+
+function initHeroTilt() {
+  const cards = document.querySelectorAll(".hero-orbit");
+  if (!cards.length || window.matchMedia("(pointer: coarse)").matches) return;
+
+  cards.forEach((card) => {
+    card.addEventListener("pointermove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+      card.style.setProperty("--tilt-x", `${x * 7}deg`);
+      card.style.setProperty("--tilt-y", `${y * -7}deg`);
+    });
+
+    card.addEventListener("pointerleave", () => {
+      card.style.setProperty("--tilt-x", "0deg");
+      card.style.setProperty("--tilt-y", "0deg");
+    });
+  });
 }

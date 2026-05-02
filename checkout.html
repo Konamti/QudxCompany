@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Checkout | QUDx Inc.</title>
+<link rel="preconnect" href="https://cdn.tailwindcss.com">
+<link rel="preload" href="LOGO.png" as="image">
 <script src="https://cdn.tailwindcss.com"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <link href="styles.css" rel="stylesheet">
 </head>
 
@@ -12,8 +15,8 @@
 <header class="fixed w-full bg-white shadow z-50">
 <div class="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex justify-between items-center">
 <a href="index.html" class="flex items-center gap-3">
-<img src="LOGO.png" class="w-10 h-10" alt="QUDx Inc. logo">
-<span class="font-bold text-lg" data-i18n="brand">QUDx Inc.</span>
+<img src="LOGO.png" class="w-10 h-10" alt="QUDx Inc. logo" width="40" height="40">
+<span class="brand-name font-bold text-lg" data-i18n="brand">QUDx Inc.</span>
 </a>
 <div class="flex items-center gap-4">
 <label class="language-switcher compact" aria-label="Choose language">
@@ -23,16 +26,16 @@
 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
 </svg>
 <select class="language-select" aria-label="Language">
-<option value="en">EN</option>
-<option value="fr">FR</option>
-<option value="ar">AR</option>
-<option value="it">IT</option>
-<option value="es">ES</option>
-<option value="ru">RU</option>
-<option value="id">ID</option>
-<option value="zu">ZA</option>
-<option value="zh">中文</option>
-<option value="ja">日本語</option>
+<option value="en">🇺🇸 EN</option>
+<option value="fr">🇫🇷 FR</option>
+<option value="ar">🇸🇦 AR</option>
+<option value="it">🇮🇹 IT</option>
+<option value="es">🇪🇸 ES</option>
+<option value="ru">🇷🇺 RU</option>
+<option value="id">🇮🇩 ID</option>
+<option value="zu">🇿🇦 ZA</option>
+<option value="zh">🇨🇳 中文</option>
+<option value="ja">🇯🇵 日本語</option>
 </select>
 </label>
 <a href="index.html#investor-options" class="text-sm font-semibold text-green-800 hover:text-green-700" data-i18n="back">Back</a>
@@ -42,7 +45,7 @@
 
 <main class="pt-28 pb-16 px-5 sm:px-6">
 <section class="max-w-5xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-start">
-<div class="bg-white rounded-lg shadow-sm p-6 sm:p-8">
+<div class="bg-white rounded-lg shadow-sm p-6 sm:p-8" data-aos="fade-right">
 <p class="text-sm uppercase tracking-wide text-green-800 font-bold mb-3" data-i18n="checkoutEyebrow">Secure checkout</p>
 <h1 class="text-4xl md:text-5xl font-bold mb-4" data-i18n="checkoutTitle">Support QUDx Inc.</h1>
 <p class="text-gray-600 leading-7 mb-8">
@@ -77,7 +80,7 @@ Enter your details and choose the amount you want to contribute. Payment is comp
 </form>
 </div>
 
-<aside class="bg-white rounded-lg shadow-sm p-6 sm:p-8">
+<aside class="bg-white rounded-lg shadow-sm p-6 sm:p-8" data-aos="fade-left">
 <h2 class="text-2xl font-bold mb-2" data-i18n="paymentOptions">Payment Options</h2>
 <p id="checkoutPlan" class="text-gray-600 mb-6">Plan: QUDx Support</p>
 
@@ -89,7 +92,7 @@ Enter your details and choose the amount you want to contribute. Payment is comp
 
 <button id="paypalCheckout" type="button" disabled class="block w-full cursor-not-allowed border border-gray-300 bg-gray-100 text-gray-400 px-5 py-4 rounded-lg text-center font-semibold">
 <span data-i18n="payWithPaypal">Pay with PayPal</span>
-<span class="block text-sm font-normal">Coming Soon</span>
+<span class="block text-sm font-normal" data-i18n="comingSoon">Coming Soon</span>
 </button>
 </div>
 
@@ -108,6 +111,7 @@ Enter your details and choose the amount you want to contribute. Payment is comp
 <p class="text-sm text-gray-500 mt-2">Qudx Inc &copy; 2026</p>
 </footer>
 
-<script src="script.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>

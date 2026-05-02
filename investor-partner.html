@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Investor & Partner | QUDx Himaya</title>
+<link rel="preconnect" href="https://cdn.tailwindcss.com">
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="preload" href="LOGO.png" as="image">
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <link href="styles.css" rel="stylesheet">
@@ -13,8 +16,8 @@
 <header class="fixed w-full bg-white shadow z-50">
 <div class="max-w-7xl mx-auto px-5 sm:px-6 py-4 flex justify-between items-center">
 <a href="index.html" class="flex items-center gap-3">
-<img src="LOGO.png" class="w-10 h-10" alt="QUDx Inc. logo">
-<span class="font-bold text-lg" data-i18n="brand">QUDx Inc.</span>
+<img src="LOGO.png" class="w-10 h-10" alt="QUDx Inc. logo" width="40" height="40">
+<span class="brand-name font-bold text-lg" data-i18n="brand">QUDx Inc.</span>
 </a>
 
 <div class="flex items-center gap-4">
@@ -25,16 +28,16 @@
 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
 </svg>
 <select class="language-select" aria-label="Language">
-<option value="en">EN</option>
-<option value="fr">FR</option>
-<option value="ar">AR</option>
-<option value="it">IT</option>
-<option value="es">ES</option>
-<option value="ru">RU</option>
-<option value="id">ID</option>
-<option value="zu">ZA</option>
-<option value="zh">中文</option>
-<option value="ja">日本語</option>
+<option value="en">🇺🇸 EN</option>
+<option value="fr">🇫🇷 FR</option>
+<option value="ar">🇸🇦 AR</option>
+<option value="it">🇮🇹 IT</option>
+<option value="es">🇪🇸 ES</option>
+<option value="ru">🇷🇺 RU</option>
+<option value="id">🇮🇩 ID</option>
+<option value="zu">🇿🇦 ZA</option>
+<option value="zh">🇨🇳 中文</option>
+<option value="ja">🇯🇵 日本語</option>
 </select>
 </label>
 <a href="checkout.html" class="text-green-800 hover:text-green-700" aria-label="Open checkout cart">
@@ -68,27 +71,28 @@ An ethical assurance model for families, investors, partners, and communities.
 </div>
 </div>
 
-<div class="investor-orbit p-6" data-aos="zoom-in" data-aos-delay="150">
-<div class="bg-white/12 border border-white/20 rounded-lg p-6 backdrop-blur-md">
-<img src="LOGO.png" class="w-24 h-24 mx-auto mb-6" alt="QUDx Himaya">
+<div class="investor-orbit hero-orbit p-6" data-aos="zoom-in" data-aos-delay="150">
+<div class="hero-visual-panel rounded-lg p-6">
+<img src="LOGO.png" class="hero-visual-image w-24 h-24 mx-auto mb-6" alt="QUDx Himaya" width="96" height="96" fetchpriority="high" decoding="async">
 <div class="grid grid-cols-2 gap-4 text-center">
 <div class="investor-mini-card">
-<span class="block text-3xl font-black">1.9B+</span>
+<span class="stat-value count-stat block font-black" data-count="1.9" data-decimals="1" data-suffix="B+">0.0B+</span>
 <span class="text-sm text-white/75">Muslim Market</span>
 </div>
 <div class="investor-mini-card">
-<span class="block text-3xl font-black">15-20M</span>
+<span class="stat-value count-stat block font-black" data-count="20" data-prefix="15-" data-suffix="M">15-00M</span>
 <span class="text-sm text-white/75">CFA Range</span>
 </div>
 <div class="investor-mini-card">
-<span class="block text-3xl font-black">03</span>
+<span class="stat-value count-stat block font-black" data-count="3" data-pad="2">00</span>
 <span class="text-sm text-white/75">Core Principles</span>
 </div>
 <div class="investor-mini-card">
-<span class="block text-3xl font-black">100%</span>
+<span class="stat-value count-stat block font-black" data-count="100" data-suffix="%">00%</span>
 <span class="text-sm text-white/75">Ethical Focus</span>
 </div>
 </div>
+<div class="stats-burst hero-stats-burst" aria-hidden="true"></div>
 </div>
 </div>
 </div>
@@ -303,7 +307,7 @@ An ethical assurance model for families, investors, partners, and communities.
 </div>
 </footer>
 
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="script.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>
