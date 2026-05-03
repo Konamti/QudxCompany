@@ -419,6 +419,9 @@ document.addEventListener("DOMContentLoaded", () => {
   startProjectAutoScroll();
   initCheckoutPage();
   initCountStats();
+  initHeroTilt();
+  initSpatialHero();
+  initCtaParallax();
 });
 
 function initLanguageSelector() {
@@ -644,9 +647,73 @@ function closeMenu() {
   document.getElementById("mobileMenu")?.classList.add("hidden");
 }
 
-function openForm(type) {
+function getModalTrigger(event) {
+  return event?.currentTarget || event?.target || window.event?.currentTarget || document.activeElement;
+}
+
+function positionPanelOverTrigger(panel, trigger, options = {}) {
+  if (!panel || !trigger || typeof trigger.getBoundingClientRect !== "function") return false;
+
+  const gap = options.gap ?? 12;
+  const preferAbove = options.preferAbove ?? true;
+  const margin = options.margin ?? 12;
+
+  panel.style.position = "fixed";
+  panel.style.top = "0";
+  panel.style.left = "0";
+  panel.style.right = "auto";
+  panel.style.bottom = "auto";
+  panel.style.transform = "none";
+
+  const triggerRect = trigger.getBoundingClientRect();
+  const panelRect = panel.getBoundingClientRect();
+  const viewportWidth = document.documentElement.clientWidth;
+  const viewportHeight = document.documentElement.clientHeight;
+
+  let left = triggerRect.left + (triggerRect.width / 2) - (panelRect.width / 2);
+  let top = preferAbove ? triggerRect.top - panelRect.height - gap : triggerRect.bottom + gap;
+
+  if (top < margin) {
+    top = triggerRect.bottom + gap;
+  }
+
+  if (top + panelRect.height > viewportHeight - margin) {
+    top = Math.max(margin, viewportHeight - panelRect.height - margin);
+  }
+
+  left = Math.max(margin, Math.min(left, viewportWidth - panelRect.width - margin));
+
+  panel.style.left = `${Math.round(left)}px`;
+  panel.style.top = `${Math.round(top)}px`;
+  return true;
+}
+
+function attachAnchoredPanelReposition(panel, trigger, options = {}) {
+  if (!panel || !trigger) return;
+
+  const reposition = () => {
+    if (!panel.classList.contains("hidden")) {
+      positionPanelOverTrigger(panel, trigger, options);
+    }
+  };
+
+  panel._anchoredReposition = reposition;
+  window.addEventListener("resize", reposition, { passive: true });
+  window.addEventListener("scroll", reposition, { passive: true });
+}
+
+function detachAnchoredPanelReposition(panel) {
+  if (!panel?._anchoredReposition) return;
+  window.removeEventListener("resize", panel._anchoredReposition);
+  window.removeEventListener("scroll", panel._anchoredReposition);
+  panel._anchoredReposition = null;
+}
+
+function openForm(type, event) {
   const modal = document.getElementById("formModal");
   const title = document.getElementById("formTitle");
+  const backdrop = document.getElementById("formBackdrop");
+  const trigger = getModalTrigger(event);
 
   if (!modal || !title) return;
 
@@ -659,10 +726,28 @@ function openForm(type) {
 
   title.innerText = titles[type] || "Contact QUDx";
   modal.classList.remove("hidden");
+  if (backdrop) backdrop.classList.remove("hidden");
+
+  detachAnchoredPanelReposition(modal);
+  requestAnimationFrame(() => {
+    const positioned = positionPanelOverTrigger(modal, trigger);
+    if (positioned) {
+      attachAnchoredPanelReposition(modal, trigger);
+      return;
+    }
+
+    modal.style.position = "fixed";
+    modal.style.top = "50%";
+    modal.style.left = "50%";
+    modal.style.transform = "translate(-50%, -50%)";
+  });
 }
 
 function closeForm() {
-  document.getElementById("formModal")?.classList.add("hidden");
+  const modal = document.getElementById("formModal");
+  detachAnchoredPanelReposition(modal);
+  modal?.classList.add("hidden");
+  document.getElementById("formBackdrop")?.classList.add("hidden");
 }
 
 function openProjectModal(projectKey) {
@@ -707,23 +792,44 @@ function startProjectAutoScroll() {
   }, 5000);
 }
 
-function openPaymentModal(plan) {
+function openPaymentModal(plan, event) {
   const modal = document.getElementById("paymentModal");
+  const panel = modal?.querySelector(".payment-modal-panel");
   const planText = document.getElementById("paymentPlanText");
   const paypalOption = document.getElementById("paypalOption");
   const paystackOption = document.getElementById("paystackOption");
+  const trigger = getModalTrigger(event);
 
-  if (!modal || !planText || !paypalOption || !paystackOption) return;
+  if (!modal || !panel || !planText || !paypalOption || !paystackOption) return;
 
   const dictionary = { ...translations.en, ...(translations[localStorage.getItem("qudxLanguage") || "en"] || {}) };
   const checkoutPlan = encodeURIComponent(plan || "QUDx Support");
   planText.innerText = `${dictionary.paymentSelectedPrefix} ${plan}. ${dictionary.paymentText}`;
   paystackOption.href = `checkout.html?method=paystack&plan=${checkoutPlan}`;
   modal.classList.remove("hidden");
+  modal.classList.add("anchored-payment");
+
+  detachAnchoredPanelReposition(panel);
+  requestAnimationFrame(() => {
+    const positioned = positionPanelOverTrigger(panel, trigger);
+    if (positioned) {
+      attachAnchoredPanelReposition(panel, trigger);
+      return;
+    }
+
+    panel.style.position = "fixed";
+    panel.style.top = "50%";
+    panel.style.left = "50%";
+    panel.style.transform = "translate(-50%, -50%)";
+  });
 }
 
 function closePaymentModal() {
-  document.getElementById("paymentModal")?.classList.add("hidden");
+  const modal = document.getElementById("paymentModal");
+  const panel = modal?.querySelector(".payment-modal-panel");
+  detachAnchoredPanelReposition(panel);
+  modal?.classList.add("hidden");
+  modal?.classList.remove("anchored-payment");
 }
 
 function showSupportToast() {
@@ -861,3 +967,239 @@ function initHeroTilt() {
     });
   });
 }
+
+async function initSpatialHero() {
+  const shells = Array.from(document.querySelectorAll(".hero-model-shell"));
+  if (!shells.length) return;
+
+  const canUseWebGL = (() => {
+    try {
+      const canvas = document.createElement("canvas");
+      return Boolean(window.WebGLRenderingContext && (canvas.getContext("webgl") || canvas.getContext("experimental-webgl")));
+    } catch (_error) {
+      return false;
+    }
+  })();
+
+  if (!canUseWebGL) {
+    document.documentElement.classList.add("no-webgl");
+    return;
+  }
+
+  let THREE;
+  try {
+    THREE = await import("https://unpkg.com/three@0.164.1/build/three.module.js");
+  } catch (_error) {
+    document.documentElement.classList.add("no-webgl");
+    return;
+  }
+
+  shells.forEach((shell) => buildHeroModel(shell, THREE));
+}
+
+function buildHeroModel(shell, THREE) {
+  const canvas = shell.querySelector(".hero-webgl");
+  const fallbackImage = shell.querySelector(".hero-visual-image");
+  if (!canvas) return;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+  camera.position.set(0, 0.2, 6);
+
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: "high-performance" });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  const green = new THREE.MeshStandardMaterial({
+    color: 0x2c9523,
+    roughness: 0.42,
+    metalness: 0.28
+  });
+  const gold = new THREE.MeshStandardMaterial({
+    color: 0xc8a951,
+    roughness: 0.34,
+    metalness: 0.55
+  });
+  const glass = new THREE.MeshPhysicalMaterial({
+    color: 0xffffff,
+    transparent: true,
+    opacity: 0.28,
+    roughness: 0.08,
+    metalness: 0,
+    transmission: 0.25,
+    clearcoat: 0.7
+  });
+
+  const core = new THREE.Mesh(new THREE.IcosahedronGeometry(1.45, 1), green);
+  core.scale.set(1.05, 1.18, 0.72);
+  group.add(core);
+
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(1.95, 0.045, 10, 72), gold);
+  ring.rotation.set(Math.PI / 2.25, 0.08, 0.25);
+  group.add(ring);
+
+  const secondRing = new THREE.Mesh(new THREE.TorusGeometry(1.55, 0.035, 10, 64), glass);
+  secondRing.rotation.set(Math.PI / 2.8, 0.75, -0.35);
+  group.add(secondRing);
+
+  const shield = new THREE.Mesh(new THREE.ConeGeometry(0.72, 1.05, 5, 1), gold);
+  shield.position.set(0, -0.1, 0.8);
+  shield.rotation.set(Math.PI, Math.PI / 5, 0);
+  shield.scale.set(1.1, 0.9, 0.25);
+  group.add(shield);
+
+  const particles = new THREE.Group();
+  for (let index = 0; index < 18; index += 1) {
+    const piece = new THREE.Mesh(new THREE.OctahedronGeometry(0.055 + (index % 3) * 0.018, 0), index % 2 ? gold : glass);
+    const angle = (index / 18) * Math.PI * 2;
+    const radius = 2.35 + (index % 4) * 0.12;
+    piece.position.set(Math.cos(angle) * radius, Math.sin(angle * 1.4) * 0.75, Math.sin(angle) * radius * 0.34);
+    particles.add(piece);
+  }
+  group.add(particles);
+
+  scene.add(new THREE.AmbientLight(0xffffff, 1.4));
+  const key = new THREE.DirectionalLight(0xffffff, 2.4);
+  key.position.set(3.5, 4, 5);
+  scene.add(key);
+  const rim = new THREE.PointLight(0xc8a951, 2.2, 8);
+  rim.position.set(-2.6, 1.5, 2.5);
+  scene.add(rim);
+
+  let pointerX = 0;
+  let pointerY = 0;
+  let dragging = false;
+  let dragStart = 0;
+  let baseRotation = 0;
+
+  function resize() {
+    const width = Math.max(220, shell.clientWidth);
+    const height = Math.max(260, shell.clientHeight || width * 0.78);
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+  }
+
+  function setPointer(event) {
+    const rect = shell.getBoundingClientRect();
+    pointerX = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+    pointerY = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+  }
+
+  shell.addEventListener("pointermove", (event) => {
+    setPointer(event);
+    if (dragging) {
+      group.rotation.y = baseRotation + (event.clientX - dragStart) * 0.012;
+    }
+  });
+
+  shell.addEventListener("pointerdown", (event) => {
+    dragging = true;
+    dragStart = event.clientX;
+    baseRotation = group.rotation.y;
+    shell.setPointerCapture?.(event.pointerId);
+  });
+
+  shell.addEventListener("pointerup", () => {
+    dragging = false;
+  });
+
+  shell.addEventListener("pointerleave", () => {
+    dragging = false;
+    pointerX = 0;
+    pointerY = 0;
+  });
+
+  resize();
+  window.addEventListener("resize", resize, { passive: true });
+  shell.classList.add("is-webgl-ready");
+  if (fallbackImage) fallbackImage.setAttribute("aria-hidden", "true");
+
+  function animate(now) {
+    const time = now * 0.001;
+    if (!dragging) {
+      group.rotation.y += 0.004;
+    }
+    group.rotation.x += ((pointerY * 0.22) - group.rotation.x) * 0.04;
+    group.rotation.z += ((pointerX * -0.08) - group.rotation.z) * 0.04;
+    ring.rotation.z = time * 0.18;
+    secondRing.rotation.z = -time * 0.24;
+    particles.rotation.y = time * 0.22;
+    particles.rotation.x = Math.sin(time * 0.7) * 0.12;
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+}
+
+function initCtaParallax() {
+  const cta = document.getElementById("cta");
+  if (!cta) return;
+
+  const glassElements = Array.from(cta.querySelectorAll(".cta-glass"));
+  if (!glassElements.length) return;
+
+  const update = () => {
+    const rect = cta.getBoundingClientRect();
+    const viewport = window.innerHeight || document.documentElement.clientHeight;
+    const progress = Math.max(0, Math.min(1, 1 - (rect.top / viewport)));
+    cta.style.setProperty("--cta-depth", progress.toFixed(3));
+
+    glassElements.forEach((element, index) => {
+      const offset = (progress - 0.5) * (28 + index * 18);
+      const rotate = (progress - 0.5) * (18 + index * 10);
+      element.style.transform = `translate3d(${offset * (index % 2 ? -1 : 1)}px, ${offset * -0.9}px, 0) rotate(${rotate}deg)`;
+    });
+  };
+
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+}
+
+// Scroll-based navbar hide/show
+let lastScrollTop = 0;
+const header = document.querySelector('header');
+
+function handleScroll() {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  if (scrollTop > lastScrollTop && scrollTop > 100) {
+    // Scrolling down and past 100px, hide navbar
+    header.style.transform = 'translateY(-100%)';
+  } else {
+    // Scrolling up or at top, show navbar
+    header.style.transform = 'translateY(0)';
+  }
+  lastScrollTop = scrollTop;
+}
+
+window.addEventListener('scroll', handleScroll, { passive: true });
+
+// Back to top button
+function initBackToTop() {
+  const button = document.createElement('button');
+  button.innerHTML = '↑';
+  button.className = 'fixed bottom-6 right-6 bg-green-700 text-white w-12 h-12 rounded-full shadow-lg hover:bg-green-800 transition-colors z-40 opacity-0 pointer-events-none';
+  button.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  button.setAttribute('aria-label', 'Scroll to top');
+  document.body.appendChild(button);
+
+  // Show/hide based on scroll
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      button.classList.remove('opacity-0', 'pointer-events-none');
+      button.classList.add('opacity-100', 'pointer-events-auto');
+    } else {
+      button.classList.remove('opacity-100', 'pointer-events-auto');
+      button.classList.add('opacity-0', 'pointer-events-none');
+    }
+  });
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', () => {
+  initBackToTop();
+});

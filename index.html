@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QUDx Inc. | Himaya</title>
-
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://cdn.tailwindcss.com">
 <link rel="preconnect" href="https://unpkg.com">
 <link rel="preload" href="newIllusration.png" as="image" fetchpriority="high">
@@ -17,7 +17,7 @@
 <body class="bg-white text-gray-900">
 
 <!-- NAV -->
-<header class="fixed w-full bg-white shadow z-50">
+<header class="fixed w-full bg-white shadow z-50" style="transition: transform 0.3s ease;">
 <div class="max-w-7xl mx-auto px-5 sm:px-6 py-4 flex justify-between items-center">
 <a href="index.html" class="flex items-center gap-3">
 <img src="LOGO.png" class="w-10 h-10" alt="QUDx Inc. logo" width="40" height="40">
@@ -25,6 +25,7 @@
 </a>
 
 <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-gray-700">
+<a href="index.html" class="hover:text-green-700">Home</a>
 <a href="#about" class="hover:text-green-700" data-i18n="navAbout">About</a>
 <a href="#solution" class="hover:text-green-700" data-i18n="navSolution">Solution</a>
 <a href="#how-it-works" class="hover:text-green-700" data-i18n="navHow">How It Works</a>
@@ -99,6 +100,7 @@ Get Started
 </div>
 
 <nav id="mobileMenu" class="hidden lg:hidden bg-white border-t px-5 sm:px-6 pb-4 text-sm font-medium text-gray-700">
+<a href="index.html" onclick="closeMenu()" class="block py-3 hover:text-green-700">Home</a>
 <a href="#about" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navAbout">About</a>
 <a href="#solution" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navSolution">Solution</a>
 <a href="#how-it-works" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navHow">How It Works</a>
@@ -128,14 +130,16 @@ Sharia-compliant insurance and inheritance protection designed for trust, transp
 </p>
 
 <div class="flex flex-col sm:flex-row gap-4">
-<button onclick="openForm('investor')" class="bg-white text-green-800 px-6 py-3 rounded-lg font-semibold shadow-xl" data-i18n="requestInvestor">Request Investor Access</button>
-<button onclick="openForm('partner')" class="border border-white px-6 py-3 rounded-lg" data-i18n="partnerWithUs">Partner With Us</button>
+<button onclick="window.location.href='partner-form.html?type=investor'" class="bg-white text-green-800 px-6 py-3 rounded-lg font-semibold shadow-xl">Request Investor Access</button>
+<button onclick="window.location.href='partner-form.html?type=partner'" class="border border-white px-6 py-3 rounded-lg">Partner With Us</button>
 </div>
 </div>
 
 <div class="investor-orbit hero-orbit p-6" data-aos="zoom-in" data-aos-delay="150">
 <div class="hero-visual-panel rounded-lg p-6">
+<div class="hero-model-shell" data-model="himaya">
 <img src="newIllusration.png" class="brand-float hero-visual-image w-full max-w-md mx-auto" alt="Animated QUDx illustration" width="768" height="768" fetchpriority="high" decoding="async">
+</div>
 <div class="grid grid-cols-2 gap-4 text-center mt-4">
 <div class="investor-mini-card">
 <span class="stat-value count-stat block font-black" data-count="4" data-pad="2">00</span>
@@ -284,7 +288,7 @@ Building ethical protection systems for families, communities, investors, and pa
 <p class="text-gray-600 mb-8">For visible strategic partners who want to support QUDx growth and community trust.</p>
 <div class="flex flex-col gap-3">
 <a href="investor-partner.html" class="bg-green-700 text-white px-5 py-3 rounded-lg text-center" data-i18n="learnMore">Learn More</a>
-<button onclick="openPaymentModal('Elite')" class="border border-green-700 text-green-800 px-5 py-3 rounded-lg text-center" data-i18n="iAmInterested">I Am Interested</button>
+<button onclick="window.location.href='partner-form.html?type=Elite'" class="border border-green-700 text-green-800 px-5 py-3 rounded-lg text-center" data-i18n="iAmInterested">I Am Interested</button>
 </div>
 </article>
 
@@ -294,7 +298,7 @@ Building ethical protection systems for families, communities, investors, and pa
 <p class="text-gray-600 mb-8">For founding board-level supporters who want early involvement in QUDx direction.</p>
 <div class="flex flex-col gap-3">
 <a href="investor-partner.html" class="bg-green-700 text-white px-5 py-3 rounded-lg text-center" data-i18n="learnMore">Learn More</a>
-<button onclick="openPaymentModal('BODs')" class="border border-green-700 text-green-800 px-5 py-3 rounded-lg text-center" data-i18n="iAmInterested">I Am Interested</button>
+<button onclick="window.location.href='partner-form.html?type=BODs'" class="border border-green-700 text-green-800 px-5 py-3 rounded-lg text-center" data-i18n="iAmInterested">I Am Interested</button>
 </div>
 </article>
 
@@ -303,7 +307,7 @@ Building ethical protection systems for families, communities, investors, and pa
 <p class="text-gray-600 mb-8">For supporters who want to contribute privately while still helping the mission grow.</p>
 <div class="flex flex-col gap-3">
 <a href="investor-partner.html" class="bg-green-700 text-white px-5 py-3 rounded-lg text-center" data-i18n="learnMore">Learn More</a>
-<button onclick="openPaymentModal('Anonymous')" class="border border-green-700 text-green-800 px-5 py-3 rounded-lg text-center" data-i18n="iAmInterested">I Am Interested</button>
+<button onclick="window.location.href='partner-form.html?type=Anonymous'" class="border border-green-700 text-green-800 px-5 py-3 rounded-lg text-center" data-i18n="iAmInterested">I Am Interested</button>
 </div>
 </article>
 </div>
@@ -385,7 +389,9 @@ Building ethical protection systems for families, communities, investors, and pa
 </section>
 
 <!-- FOUNDER NOTE -->
-<section class="bg-[#f7f8f2] py-20 px-5 sm:px-6 text-center">
+<section class="bg-[#f7f8f2] py-20 px-5 sm:px-6 text-center relative overflow-hidden">
+<div class="investor-doodle investor-doodle-one"></div>
+<div class="investor-doodle investor-doodle-two"></div>
 <div class="max-w-3xl mx-auto" data-aos="fade-up">
 <h2 class="text-3xl md:text-4xl font-serif italic text-green-800 mb-6" data-i18n="founderNoteTitle">A Note from the Founder</h2>
 <div class="w-28 h-1 bg-green-800 mx-auto mb-8"></div>
@@ -466,24 +472,32 @@ Building ethical protection systems for families, communities, investors, and pa
 <section id="cta" class="gradient text-white py-20 px-5 sm:px-6 text-center">
 <h2 class="text-3xl font-bold mb-6" data-i18n="ctaTitle">Be Part of the Future of Ethical Protection</h2>
 
-<div class="flex flex-col md:flex-row justify-center gap-4">
-<button onclick="openForm('investor')" class="bg-white text-green-800 px-6 py-3 rounded-lg" data-i18n="requestInvestor">
+<div class="cta-scene" aria-hidden="true">
+<span class="cta-glass cta-glass-one"></span>
+<span class="cta-glass cta-glass-two"></span>
+<span class="cta-glass cta-glass-three"></span>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row justify-center gap-4">
+<button onclick="openForm('investor', event)" class="bg-white text-green-800 px-6 py-3 rounded-lg" data-i18n="requestInvestor">
 Investor Access
 </button>
 
-<button onclick="openForm('partner')" class="border border-white px-6 py-3 rounded-lg" data-i18n="partnerWithUs">
+<button onclick="openForm('partner', event)" class="border border-white px-6 py-3 rounded-lg" data-i18n="partnerWithUs">
 Partner With Us
 </button>
 
-<button onclick="openForm('early')" class="bg-green-900 px-6 py-3 rounded-lg" data-i18n="joinEarlyAccess">
+<button onclick="window.location.href='partner-form.html?type=early'" class="bg-green-900 px-6 py-3 rounded-lg" data-i18n="joinEarlyAccess">
 Join Early Access
 </button>
 </div>
 </section>
 
+<!-- FORM BACKDROP -->
+<div id="formBackdrop" class="hidden fixed inset-0 bg-black bg-opacity-50 z-[59]" onclick="closeForm()"></div>
+
 <!-- FORM MODAL -->
-<div id="formModal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-5 flex items-center justify-center z-[60]">
-<div class="bg-white p-6 sm:p-8 rounded-lg w-full max-w-lg">
+<div id="formModal" class="hidden fixed p-5 z-[60]" style="width: 90%; max-width: 500px;">
+<div class="bg-white p-6 sm:p-8 rounded-lg shadow-2xl">
 <h3 id="formTitle" class="text-xl font-bold mb-4"></h3>
 
 <form action="https://formspree.io/f/yourid" method="POST" onsubmit="redirectThankYou()">
@@ -515,8 +529,8 @@ Join Early Access
 </div>
 
 <!-- PAYMENT MODAL -->
-<div id="paymentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-5 flex items-center justify-center z-[75]">
-<div class="bg-white p-6 sm:p-8 rounded-lg w-full max-w-lg">
+<div id="paymentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-5 z-[75]" onclick="if (event.target === this) closePaymentModal()">
+<div class="payment-modal-panel bg-white p-6 sm:p-8 rounded-lg w-full max-w-lg">
 <h3 class="text-2xl font-bold mb-3" data-i18n="paymentTitle">Choose Payment Option</h3>
 <p id="paymentPlanText" class="text-gray-600 mb-6" data-i18n="paymentText">Select how you would like to support QUDx.</p>
 <div class="grid sm:grid-cols-2 gap-4">

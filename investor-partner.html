@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Investor & Partner | QUDx Himaya</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://cdn.tailwindcss.com">
 <link rel="preconnect" href="https://unpkg.com">
 <link rel="preload" href="LOGO.png" as="image">
@@ -13,15 +14,25 @@
 </head>
 
 <body class="bg-[#f8faf7] text-gray-900">
-<header class="fixed w-full bg-white shadow z-50">
+<header class="fixed w-full bg-white shadow z-50" style="transition: transform 0.3s ease;">
 <div class="max-w-7xl mx-auto px-5 sm:px-6 py-4 flex justify-between items-center">
 <a href="index.html" class="flex items-center gap-3">
 <img src="LOGO.png" class="w-10 h-10" alt="QUDx Inc. logo" width="40" height="40">
 <span class="brand-name font-bold text-lg" data-i18n="brand">QUDx Inc.</span>
 </a>
 
-<div class="flex items-center gap-4">
-<label class="language-switcher compact" aria-label="Choose language">
+<nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-gray-700">
+<a href="index.html" class="hover:text-green-700">Home</a>
+<a href="#about" class="hover:text-green-700" data-i18n="navAbout">About</a>
+<a href="#solution" class="hover:text-green-700" data-i18n="navSolution">Solution</a>
+<a href="#how-it-works" class="hover:text-green-700" data-i18n="navHow">How It Works</a>
+<a href="#roadmap" class="hover:text-green-700" data-i18n="navRoadmap">Roadmap</a>
+<a href="#projects" class="hover:text-green-700" data-i18n="navProjects">Projects</a>
+<a href="#contact" class="hover:text-green-700" data-i18n="navContact">Contact</a>
+</nav>
+
+<div class="hidden lg:flex items-center gap-3">
+<label class="language-switcher" aria-label="Choose language">
 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 <circle cx="12" cy="12" r="10"></circle>
 <path d="M2 12h20"></path>
@@ -49,7 +60,51 @@
 </a>
 <a href="index.html#investor-options" class="text-sm font-semibold text-green-800 hover:text-green-700" data-i18n="back">Back</a>
 </div>
+
+<div class="header-mobile-tools lg:hidden flex items-center gap-3">
+<label class="language-switcher compact" aria-label="Choose language">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="12" cy="12" r="10"></circle>
+<path d="M2 12h20"></path>
+<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+</svg>
+<select class="language-select" aria-label="Language">
+<option value="en">🇺🇸 EN</option>
+<option value="fr">🇫🇷 FR</option>
+<option value="ar">🇸🇦 AR</option>
+<option value="it">🇮🇹 IT</option>
+<option value="es">🇪🇸 ES</option>
+<option value="ru">🇷🇺 RU</option>
+<option value="id">🇮🇩 ID</option>
+<option value="zu">🇿🇦 ZA</option>
+<option value="zh">🇨🇳 中文</option>
+<option value="ja">🇯🇵 日本語</option>
+</select>
+</label>
+<a href="checkout.html" class="text-green-800 hover:text-green-700" aria-label="Open checkout cart">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="8" cy="21" r="1"></circle>
+<circle cx="19" cy="21" r="1"></circle>
+<path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h8.72a2 2 0 0 0 2-1.58L21 7H5.12"></path>
+</svg>
+</a>
+<button onclick="toggleMenu()" class="mobile-menu-button" aria-label="Open menu">
+<img src="hamburgerIcon.png" alt="Menu" class="hamburger-icon">
+</button>
 </div>
+</div>
+
+<nav id="mobileMenu" class="hidden lg:hidden bg-white border-t px-5 sm:px-6 pb-4 text-sm font-medium text-gray-700">
+<a href="index.html" onclick="closeMenu()" class="block py-3 hover:text-green-700">Home</a>
+<a href="#about" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navAbout">About</a>
+<a href="#solution" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navSolution">Solution</a>
+<a href="#how-it-works" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navHow">How It Works</a>
+<a href="#roadmap" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navRoadmap">Roadmap</a>
+<a href="#projects" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navProjects">Projects</a>
+<a href="#contact" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="navContact">Contact</a>
+<a href="checkout.html" onclick="closeMenu()" class="block py-3 hover:text-green-700" data-i18n="cartCheckout">Cart / Checkout</a>
+<a href="index.html#investor-options" onclick="closeMenu()" class="block mt-3 text-green-800 hover:text-green-700" data-i18n="back">Back</a>
+</nav>
 </header>
 
 <main>
@@ -58,25 +113,20 @@
 <div class="investor-doodle investor-doodle-one"></div>
 <div class="investor-doodle investor-doodle-two"></div>
 
-<div class="max-w-7xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+<div class="max-w-7xl mx-auto">
 <div data-aos="fade-right">
 <p class="uppercase tracking-[0.24em] text-white/75 text-sm font-bold mb-5">QUDx Himaya</p>
-<h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6" data-i18n="investorBriefTitle">Investor & Partner Brief</h1>
+<h1 id="investorTitle" class="text-4xl md:text-6xl font-bold leading-tight mb-6">Investor & Partner Brief</h1>
 <p class="max-w-2xl text-lg md:text-xl leading-8 text-white/88 mb-8">
 An ethical assurance model for families, investors, partners, and communities.
 </p>
 <div class="flex flex-col sm:flex-row gap-4">
-<button onclick="openPaymentModal('Investor')" class="bg-white text-green-800 px-6 py-3 rounded-lg font-bold shadow-xl" data-i18n="becomeInvestor">Become an Investor</button>
+<button onclick="openPaymentModal('Investor', event)" class="bg-white text-green-800 px-6 py-3 rounded-lg font-bold shadow-xl" data-i18n="becomeInvestor">Become an Investor</button>
 <a href="#investment-story" class="border border-white/70 text-white px-6 py-3 rounded-lg font-semibold text-center" data-i18n="exploreBrief">Explore Brief</a>
 </div>
-</div>
-
-<div class="investor-orbit hero-orbit p-6" data-aos="zoom-in" data-aos-delay="150">
-<div class="hero-visual-panel rounded-lg p-6">
-<img src="LOGO.png" class="hero-visual-image w-24 h-24 mx-auto mb-6" alt="QUDx Himaya" width="96" height="96" fetchpriority="high" decoding="async">
-<div class="grid grid-cols-2 gap-4 text-center">
+<div class="flex flex-wrap gap-4 mt-8">
 <div class="investor-mini-card">
-<span class="stat-value count-stat block font-black" data-count="1.9" data-decimals="1" data-suffix="B+">0.0B+</span>
+<span class="stat-value count-stat block font-black" data-count="1.9" data-decimals="1" data-suffix="B+">1.9B+</span>
 <span class="text-sm text-white/75">Muslim Market</span>
 </div>
 <div class="investor-mini-card">
@@ -84,16 +134,15 @@ An ethical assurance model for families, investors, partners, and communities.
 <span class="text-sm text-white/75">CFA Range</span>
 </div>
 <div class="investor-mini-card">
-<span class="stat-value count-stat block font-black" data-count="3" data-pad="2">00</span>
+<span class="stat-value count-stat block font-black" data-count="3" data-pad="2">03</span>
 <span class="text-sm text-white/75">Core Principles</span>
 </div>
 <div class="investor-mini-card">
-<span class="stat-value count-stat block font-black" data-count="100" data-suffix="%">00%</span>
+<span class="stat-value count-stat block font-black" data-count="100" data-suffix="%">100%</span>
 <span class="text-sm text-white/75">Ethical Focus</span>
 </div>
 </div>
 <div class="stats-burst hero-stats-burst" aria-hidden="true"></div>
-</div>
 </div>
 </div>
 </section>
@@ -263,13 +312,13 @@ An ethical assurance model for families, investors, partners, and communities.
 <p class="text-lg leading-8 text-gray-700 max-w-3xl mx-auto mb-6">We believe in collective strength. By investing in QUDx Himaya, you are not only supporting a financial model - you are helping to create a community of trust, dignity, and resilience. Together, we can redefine assurance in Africa and empower families for generations to come.</p>
 <p class="text-lg leading-8 text-gray-700 max-w-3xl mx-auto mb-8">Become a partner, invest in ethical assurance, and help us build a future where protection is accessible, halal, and dignified.</p>
 <p class="mb-8 text-gray-600"><strong>Contact:</strong> partnership@qudxinc.org</p>
-<button onclick="openPaymentModal('Investor')" class="bg-green-700 text-white px-8 py-4 rounded-lg font-bold shadow-xl" data-i18n="becomeInvestor">Become an Investor</button>
+<button onclick="openPaymentModal('Investor', event)" class="bg-green-700 text-white px-8 py-4 rounded-lg font-bold shadow-xl" data-i18n="becomeInvestor">Become an Investor</button>
 </div>
 </section>
 </main>
 
-<div id="paymentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-5 flex items-center justify-center z-[75]">
-<div class="bg-white p-6 sm:p-8 rounded-lg w-full max-w-lg">
+<div id="paymentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 p-5 z-[75]" onclick="if (event.target === this) closePaymentModal()">
+<div class="payment-modal-panel bg-white p-6 sm:p-8 rounded-lg w-full max-w-lg">
 <h3 class="text-2xl font-bold mb-3" data-i18n="paymentTitle">Choose Payment Option</h3>
 <p id="paymentPlanText" class="text-gray-600 mb-6" data-i18n="paymentText">Select how you would like to support QUDx.</p>
 <div class="grid sm:grid-cols-2 gap-4">
@@ -306,6 +355,27 @@ An ethical assurance model for families, investors, partners, and communities.
 </div>
 </div>
 </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const type = urlParams.get('type');
+  const titleElement = document.getElementById('investorTitle');
+  if (titleElement && type) {
+    const titles = {
+      'Elite': 'Elite Investor',
+      'BODs': 'Board of Directors Membership',
+      'Anonymous': 'Anonymous Investor',
+      'investor': 'Investor Access',
+      'partner': 'Partnership',
+      'early': 'Early Access'
+    };
+    if (titles[type]) {
+      titleElement.textContent = titles[type];
+    }
+  }
+});
+</script>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
 <script src="script.js" defer></script>
