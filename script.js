@@ -1160,20 +1160,18 @@ function initCtaParallax() {
   window.addEventListener("resize", update, { passive: true });
 }
 
-// Scroll-based navbar hide/show
+// Scroll-based navbar hide/show + glass-to-solid transition
 let lastScrollTop = 0;
 const header = document.querySelector('header');
 
 function handleScroll() {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  if (scrollTop > lastScrollTop && scrollTop > 100) {
-    // Scrolling down and past 100px, hide navbar
-    header.style.transform = 'translateY(-100%)';
-  } else {
-    // Scrolling up or at top, show navbar
-    header.style.transform = 'translateY(0)';
-  }
-  lastScrollTop = scrollTop;
+  const isScrollingDown = scrollTop > lastScrollTop && scrollTop > 100;
+
+  header.classList.toggle('header-hidden', isScrollingDown);
+  header.classList.toggle('header-solid', scrollTop > 20);
+
+  lastScrollTop = Math.max(scrollTop, 0);
 }
 
 window.addEventListener('scroll', handleScroll, { passive: true });
@@ -1181,22 +1179,15 @@ window.addEventListener('scroll', handleScroll, { passive: true });
 // Back to top button
 function initBackToTop() {
   const button = document.createElement('button');
+  button.id = 'backToTop';
   button.innerHTML = '↑';
-  button.className = 'fixed bottom-6 right-6 bg-green-700 text-white w-12 h-12 rounded-full shadow-lg hover:bg-green-800 transition-colors z-40 opacity-0 pointer-events-none';
   button.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   button.setAttribute('aria-label', 'Scroll to top');
   document.body.appendChild(button);
 
-  // Show/hide based on scroll
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-      button.classList.remove('opacity-0', 'pointer-events-none');
-      button.classList.add('opacity-100', 'pointer-events-auto');
-    } else {
-      button.classList.remove('opacity-100', 'pointer-events-auto');
-      button.classList.add('opacity-0', 'pointer-events-none');
-    }
-  });
+    button.classList.toggle('show', window.scrollY > 300);
+  }, { passive: true });
 }
 
 // Initialize on load

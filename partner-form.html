@@ -112,7 +112,7 @@
 <section class="relative overflow-hidden text-white pt-32 pb-16 px-5 sm:px-6 bg-gradient-to-br from-green-800 to-green-900">
 <div class="max-w-7xl mx-auto text-center">
 <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-4">Partner With Us</h1>
-<p class="max-w-2xl mx-auto text-lg md:text-xl leading-8 text-white/88">
+<p class="max-w-2xl mx-auto text-lg md:text-xl leading-8 text-white/88" id="bannerDesc">
 Collaborate with QUDx Himaya to build ethical protection systems for communities across Africa.
 </p>
 </div>
@@ -172,17 +172,52 @@ document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   const type = urlParams.get('type');
   const titleElement = document.getElementById('formTitle');
+  const bannerTitle = document.querySelector('h1');
+  const bannerDesc = document.getElementById('bannerDesc');
   if (titleElement && type) {
     const titles = {
       'Elite': 'Elite Investor Application',
       'BODs': 'Board of Directors Membership Application',
       'Anonymous': 'Anonymous Investor Application',
-      'investor': 'Investor Access Application',
-      'partner': 'Partnership Application',
+      'investor': 'Request Investor Access',
+      'partner': 'Partner With Us',
       'early': 'Early Access Registration'
+    };
+    const bannerTitles = {
+      'Elite': 'Elite Investor',
+      'BODs': 'Board of Directors',
+      'Anonymous': 'Anonymous Investor',
+      'investor': 'Request Investor Access',
+      'partner': 'Partner With Us',
+      'early': 'Join Early Access'
+    };
+    const bannerDescs = {
+      'Elite': 'Join our elite investor program and be part of building ethical protection systems.',
+      'BODs': 'Apply for a position on our Board of Directors to guide our mission.',
+      'Anonymous': 'Invest anonymously while supporting ethical financial protection.',
+      'investor': 'Request access to investor opportunities and information.',
+      'partner': 'Collaborate with QUDx Himaya to build ethical protection systems for communities across Africa.',
+      'early': 'Be among the first to access our innovative protection solutions.'
+    };
+    const pageTitles = {
+      'Elite': 'Elite Investor | QUDx Himaya',
+      'BODs': 'Board of Directors | QUDx Himaya',
+      'Anonymous': 'Anonymous Investor | QUDx Himaya',
+      'investor': 'Request Investor Access | QUDx Himaya',
+      'partner': 'Partner With Us | QUDx Himaya',
+      'early': 'Early Access | QUDx Himaya'
     };
     if (titles[type]) {
       titleElement.textContent = titles[type];
+    }
+    if (bannerTitles[type]) {
+      bannerTitle.textContent = bannerTitles[type];
+    }
+    if (bannerDescs[type]) {
+      bannerDesc.textContent = bannerDescs[type];
+    }
+    if (pageTitles[type]) {
+      document.title = pageTitles[type];
     }
   }
 });
